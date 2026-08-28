@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "part": "세일즈플러스",
+  "name": "이현진",
+  "date": "2026-08-28",
+  "role": "BO 프론트 개발",
+  "highlight": "없음",
+  "env": {
+    "claude_code": "2.1.250",
+    "os": "Darwin 25.4.0",
+    "python": "3.9.6"
+  },
+  "coverage": {
+    "history": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "session_stats": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "transcripts": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "speech_sample_size": 157,
+    "failed_items": []
+  },
+  "summary": {
+    "one_liner": "Claude Code 를 BO(zenith) 프론트 개발 + 개발명세·회의록 문서 유지보수 용도로, 짧은 반말 지시→확인→후속 지시 방식으로, 주로 jay-wiki(113건)·zenith(82건) 에서 쓴다",
+    "habit": "완곡·탐색 마커 19.7/100 (1위) + 강조·단정 0.0 — '~같은데', '~않을까?', '일단' 으로 답을 정해놓지 않고 같이 찾는다. 물음표 49건, 존댓말 0%",
+    "effect": "Figma MCP(22회)·캘린더 MCP(26회)·Artifact(25회)를 엮은 명세·검토 산출물 — 기획서 검토 HTML, 외부망 전달용 명세 v1.3.0, 회의록 인제스트를 한 세션에서 끝냄",
+    "pain": "OMC 명령어 사용 비중 1.0%, 서브에이전트 메시지 비중 3%, 위임·자율 마커 1.3/100 — 병렬·자율 실행을 거의 쓰지 않아 자동화 심도가 5.5배에 머문다"
+  },
+  "scale": {
+    "sessions_long": 12,
+    "active_months": 1,
+    "tool_calls_long": 900,
+    "natural_prompts": 168,
+    "slash_prompts": 27,
+    "subagent_msgs_30d": 53,
+    "tok_out_30d": 2536185,
+    "thinking_tok_30d": 598048,
+    "tok_cache_read_30d": 523684574,
+    "sessions_by_month": [
+      [
+        "2026-08",
+        12
+      ]
+    ],
+    "prompts_by_month": [
+      [
+        "2026-08",
+        195
+      ]
+    ],
+    "by_hour": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      28,
+      20,
+      23,
+      3,
+      0,
+      24,
+      20,
+      31,
+      8,
+      1,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "by_dow": [
+      [
+        "Mon",
+        35
+      ],
+      [
+        "Tue",
+        42
+      ],
+      [
+        "Wed",
+        44
+      ],
+      [
+        "Thu",
+        34
+      ],
+      [
+        "Fri",
+        40
+      ],
+      [
+        "Sat",
+        0
+      ],
+      [
+        "Sun",
+        0
+      ]
+    ],
+    "rhythm_note": "07~10시 오전 봉우리와 13~15시 오후 봉우리. 12시·11시대 거의 0, 19시 이후·주말 0건 — 근무 시간 안에서만 쓰는 업무 도구 패턴. 요일은 수44·화42·금40·월35·목34로 고름. ⚠️ 8/21 리이미지로 7일치만 집계됨"
+  },
+  "projects_top": [
+    {
+      "project": "Library-Mobile-Documents-iCloud-md-obsidian-Documents-jay-wiki",
+      "sessions": 9,
+      "active_days": 7,
+      "human_turns": 100,
+      "tool_calls": 492,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-21 ~ 2026-08-28"
+    },
+    {
+      "project": "sales-zenith",
+      "sessions": 4,
+      "active_days": 5,
+      "human_turns": 73,
+      "tool_calls": 435,
+      "main_model": "claude-fable-5",
+      "period": "2026-08-24 ~ 2026-08-28"
+    }
+  ],
+  "projects_other_count": 0,
+  "workflow": {
+    "automation_depth": 5.5,
+    "turn_duration": {
+      "n": 162,
+      "median_sec": 42.3,
+      "p25_sec": 19.3,
+      "p75_sec": 138.1,
+      "p90_sec": 369.2,
+      "max_sec": 76708.3,
+      "mean_sec": 633.4,
+      "total_sec": 102610.2,
+      "buckets": [
+        [
+          "1분 이하",
+          96
+        ],
+        [
+          "1~5분",
+          43
+        ],
+        [
+          "5~15분",
+          17
+        ],
+        [
+          "15~60분",
+          5
+        ],
+        [
+          "1시간 초과",
+          1
+        ]
+      ]
+    },
+    "tools_top": [
+      [
+        "Bash",
+        737
+      ],
+      [
+        "Write",
+        72
+      ],
+      [
+        "Artifact",
+        25
+      ],
+      [
+        "Edit",
+        24
+      ],
+      [
+        "mcp__figma__get_figma_data",
+        22
+      ],
+      [
+        "ToolSearch",
+        16
+      ],
+      [
+        "AskUserQuestion",
+        16
+      ],
+      [
+        "mcp__claude_ai_Google_Calendar__update_event",
+        14
+      ],
+      [
+        "Read",
+        8
+      ],
+      [
+        "mcp__claude_ai_Google_Calendar__list_events",
+        6
+      ]
+    ],
+    "omc": {
+      "commands": [
+        [
+          "omc-setup",
+          2
+        ]
+      ],
+      "distinct_commands": 1,
+      "prompts_with_omc": 2,
+      "prompts_total": 195,
+      "omc_ratio": 0.01,
+      "slash_omc_ratio": 0.074,
+      "keyword_ratio": 0.0,
+      "keyword_forms": [],
+      "by_month": [
+        [
+          "2026-08",
+          2
+        ]
+      ]
+    },
+    "subagent_types": [
+      [
+        "Explore",
+        1
+      ]
+    ],
+    "subagent_msg_ratio": 0.03,
+    "models": [
+      [
+        "claude-fable-5",
+        0.57
+      ],
+      [
+        "claude-opus-5",
+        0.42
+      ],
+      [
+        "<synthetic>",
+        0.01
+      ]
+    ],
+    "effort": [
+      [
+        "high",
+        1.0
+      ]
+    ],
+    "permission_mode": [
+      [
+        "bypassPermissions",
+        1.0
+      ]
+    ],
+    "mcp_servers": [
+      [
+        "claude_ai_Google_Calendar",
+        26
+      ],
+      [
+        "figma",
+        22
+      ],
+      [
+        "claude_ai_Slack",
+        6
+      ]
+    ],
+    "skills": [
+      [
+        "viz",
+        7
+      ],
+      [
+        "oh-my-claudecode:omc-setup",
+        3
+      ],
+      [
+        "artifact-design",
+        3
+      ],
+      [
+        "oh-my-claudecode:setup",
+        1
+      ]
+    ],
+    "style_note": "한 번에 29자 안팎의 짧은 반말 지시를 던지고(1문장 비율 57%), 42초 안에 돌아온 결과를 보고 다음 지시를 낸다(지시 실행 중앙값 0.7분, 프롬프트 간격 중앙값 188초). 도구는 Bash 중심(77%)이고 권한을 전부 열어둔 채(bypassPermissions 100%) 최고 강도(effort high 100%)로 돌린다. 코드보다 문서 산출물(Artifact 25·Write 72·Figma 22·캘린더 26)의 비중이 눈에 띄며, 서브에이전트·OMC 자율 모드는 거의 쓰지 않아 한 스레드에서 사람이 매 턴 조향하는 방식이다."
+  },
+  "speech": {
+    "politeness": {
+      "formal": 0.0,
+      "casual": 0.76,
+      "noun": 0.24
+    },
+    "endings_top": [
+      [
+        "작성해줘",
+        7
+      ],
+      [
+        "만들어줘",
+        6
+      ],
+      [
+        "진행해",
+        5
+      ],
+      [
+        "뭐야",
+        4
+      ],
+      [
+        "세팅해줘",
+        3
+      ]
+    ],
+    "first_words_top": [
+      [
+        "일단",
+        6
+      ],
+      [
+        "오늘",
+        5
+      ],
+      [
+        "그런데",
+        4
+      ],
+      [
+        "이전",
+        4
+      ],
+      [
+        "그럼",
+        4
+      ]
+    ],
+    "vocab_top": [
+      [
+        "일단",
+        20
+      ],
+      [
+        "내용",
+        14
+      ],
+      [
+        "이벤트",
+        12
+      ],
+      [
+        "카테고리",
+        12
+      ],
+      [
+        "관리",
+        10
+      ],
+      [
+        "완료",
+        9
+      ],
+      [
+        "개발명세",
+        9
+      ],
+      [
+        "명세",
+        9
+      ],
+      [
+        "작업",
+        9
+      ],
+      [
+        "배너",
+        9
+      ]
+    ],
+    "markers_per_100": {
+      "불만·교정": 7.6,
+      "완곡·탐색": 19.7,
+      "검증요구": 12.7,
+      "강조·단정": 0.0,
+      "칭찬·수용": 3.2,
+      "위임·자율": 1.3,
+      "속도·긴급": 0.0,
+      "범위한정": 0.6,
+      "설명요구": 4.5,
+      "사과·완충": 0.6
+    },
+    "len_chars": {
+      "median": 29,
+      "p90": 120,
+      "max": 280
+    },
+    "sentences_per_prompt": 1.96,
+    "gap_sec": {
+      "median": 188,
+      "p25": 62,
+      "p90": 1378
+    },
+    "short_followup_ratio": 0.344,
+    "laugh_prompts": 0,
+    "emoji_prompts": 0,
+    "korean_prompts": 157,
+    "non_korean_prompts": 11,
+    "english_mixed_ratio": 0.471,
+    "punctuation": {
+      "question": 49,
+      "exclaim": 0,
+      "none_ratio": 0.74
+    },
+    "style_summary": [
+      "반말 76% + 존댓말 0% + 느낌표·ㅋㅋ·이모지 0건 — 감정 없이 간결하게 시키는 업무 톤. '해줘'(38건)로 끝나는 산출물 요청이 기본형",
+      "'일단'(첫 단어 1위·어휘 1위)으로 범위를 좁혀 열고, '그런데/그럼'으로 직전 답변에 이어 붙이며, '~같은데/~않을까?'(완곡·탐색 19.7)로 판단을 같이 하자고 던진다",
+      "검증요구 12.7 + 물음표 49건 — 결과를 받으면 '맞지?'·'확인해봐'로 되묻는다. 강조·단정은 0 — 명령보다 확인·질문으로 조향한다"
+    ],
+    "reproduced_prompts": [
+      "일단 카테고리 탭 쪽만 먼저 확인해봐. 배너 리스트 정렬이 명세랑 다른 것 같은데",
+      "그런데 그 옵션은 기존 LANDING이랑 동일하게 팝업 안 뜨는게 맞지? 왜 그렇게 한거야",
+      "오늘 회의 내용 정리해서 개발명세 v1.4.0으로 작성해줘. 이전 버전이랑 바뀐 부분 구분되도록"
+    ]
+  },
+  "assets": {
+    "counts": {
+      "global_claude_md": 1,
+      "rules": 0,
+      "agents": 0,
+      "commands": 0,
+      "skills": 3,
+      "hooks": 11,
+      "permissions_allow": 0,
+      "statusline": true,
+      "mcp_servers": 1,
+      "plugins": 6,
+      "project_claude_md": 2
+    },
+    "share_worthy": [
+      {
+        "asset": "jay-wiki CLAUDE.md §10 SR→dev→stg→prod 흐름 + §10d 배포 캘린더 오전 공유 절차",
+        "reason": "파트 공통 절차인데 개인 위키에만 문서화돼 있음. 파트 공용 CLAUDE.md 로 옮기면 누구나 같은 규칙으로 배포 일정을 추적"
+      },
+      {
+        "asset": "viz 스킬 (7회 사용, 세션 안 46회 로드)",
+        "reason": "기획서 검토·명세 리뷰를 HTML Artifact 로 뽑는 절차. Figma 기획서 검토 결과 공유 형식이 통일됨"
+      },
+      {
+        "asset": "zenith CLAUDE.md (28KB)",
+        "reason": "BO 프론트 공통 레포이므로 파트원 전원이 같은 파일을 쓰는지 확인할 가치"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "title": "MSP 배너 관리 기획서 검토 → 시정지시·핸드오프 문서까지 (문서 검토형)",
+      "project": "sales-zenith",
+      "when": "2026-08-24 ~ 08-28",
+      "task": "Figma 기획서(BO 26.2Q 타깃 콘텐츠 관리) 상세 검토 후 배너 타입·편집 설정 컴포넌트 수정, 검토 HTML, 시정지시서·핸드오프 md 작성",
+      "how": "Bash 136 · Artifact 22 · Write 4 · Edit 4, 스킬 viz 35 · artifact-design 4, claude-fable-5, 서브에이전트 없음",
+      "human_turns": 41,
+      "tool_calls": 180,
+      "outcome": "banner.d.ts · BannerEditDisignSetting.tsx · banner-prd-review.html · msp-banner-handoff.md · MSP배너-r1-시정지시.md — feature/msp-banner-management",
+      "saving": "약 4h → 2.1h (사람 턴 41 × 간격 중앙값 188초 ≈ 2.1시간 상호작용, 약 절반 절감 추정)"
+    },
+    {
+      "title": "실시간 수집 모니터링 대시보드 신규 개발 (코드 생성형)",
+      "project": "sales-zenith",
+      "when": "2026-08-25 ~ 08-27",
+      "task": "main 기준 신규 브랜치 생성 후 실시간 수집 모니터링 대시보드 페이지를 처음부터 구현",
+      "how": "Bash 146 · Write 50 · Edit 20 · Read 3 · Agent 1(Explore — 유일한 서브에이전트), 스킬 artifact-design 7 · viz 4, claude-fable-5 371 + claude-opus-5 53",
+      "human_turns": 25,
+      "tool_calls": 223,
+      "outcome": "47개 파일 — derive.ts + derive.test.ts · metrics.mock.ts · TypeDistributionChart · EventPayloadView · RecentMessagesTable · KpiSection · HeaderStatus 등 — feature/realtime-collection-monitoring",
+      "saving": "약 2~3일 → 1일 (컴포넌트 8개+·유틸·테스트·목 47파일, 사람 턴 25회, 자동화 심도 8.9배 — 약 1.5~2일 절감 추정)"
+    },
+    {
+      "title": "이벤트 하단 버튼 개발명세 v1.3.0 — 외부망 GLM-5.2 전달용 명세 작성 (명세 작성형)",
+      "project": "jay-wiki",
+      "when": "2026-08-25 ~ 08-27",
+      "task": "이전 명세 폴더와 Figma 기획서를 읽고 외부망 모델에 전달할 새 명세를 상세 작성",
+      "how": "Bash 43 · figma get_figma_data 20 · Write 2 · Artifact 2, 스킬 artifact-design 16 · viz 7, claude-fable-5",
+      "human_turns": 11,
+      "tool_calls": 69,
+      "outcome": "개발명세/이벤트하단버튼/versions/이벤트하단버튼작업_v1.3.0.md · spec-review-v130.html",
+      "saving": "약 2~3h → 1h (Figma 노드 20개를 직접 읽어 명세화, 11턴 — 약 2시간 절감 추정)"
+    },
+    {
+      "title": "OMC 재설치 + 파트 배포 캘린더 이벤트 일괄 정리 (환경·운영형)",
+      "project": "jay-wiki",
+      "when": "2026-08-21 ~ 08-24",
+      "task": "리이미지 직후 OMC 셋업 진행 확인, 이어서 Google Calendar 파트 배포 일정 이벤트 갱신",
+      "how": "Bash 215 · GCal update_event 14 · list_events 4 · AskUserQuestion 9, 스킬 omc-setup 36 로드, claude-opus-5",
+      "human_turns": 26,
+      "tool_calls": 251,
+      "outcome": "파일 변경 0 — 캘린더 이벤트 14건 갱신 + 로컬 환경 복구 (도구 호출 최다 세션, 심도 9.7배)",
+      "saving": "약 1h 절감 (이벤트 14건 × 2~3분 ≈ 40분 + 환경 재설치. AskUserQuestion 9회로 사람 확인이 많았음)"
+    },
+    {
+      "title": "AI Session 1회차 STT 원문 → 회의록 인제스트 (지식 정리형)",
+      "project": "jay-wiki",
+      "when": "2026-08-27 ~ 08-28",
+      "task": "AI 세션 토론 준비 상담으로 시작해, 세션 후 오프닝·토론 STT 원문과 FigJam 스냅샷을 raw 로 넣고 정리된 회의록 페이지 생성",
+      "how": "Bash 18 · Write 4 · figma 1 · ToolSearch 1, claude-fable-5",
+      "human_turns": 12,
+      "tool_calls": 24,
+      "outcome": "raw/회사/meetings/2026-08-28-AI-Session-1회차-{오프닝,토론}-STT.md · FigJam-스냅샷.md · 회사/meetings/2026-08-28-세일즈플러스파트-AI-Session-1회차.md",
+      "saving": "약 1h → 15분 (STT 2본 → 결정사항·액션아이템 정리, 12턴·24회 — 약 45분 절감 추정)"
+    }
+  ],
+  "profile": {
+    "axes": {
+      "delegation": 3,
+      "verification": 4,
+      "planning": 2,
+      "perfectionism": 3,
+      "exploration": 5
+    },
+    "axes_evidence": {
+      "delegation": "bypassPermissions 100%·effort high 100%이나 위임·자율 1.3/100, 서브에이전트 비중 3%, OMC 자율 모드 0 — 실행은 맡기되 범위는 매 턴 사람이 정함",
+      "verification": "검증요구 12.7/100 (2위), '확인해봐' 3·'검토해줘' 3, 물음표 49건/157, 사례 2 derive.test.ts 생성",
+      "planning": "plan 계열 스킬·명령 0건, 첫 단어 1위 '일단'(6)·어휘 1위 '일단'(20) — 작은 범위부터 바로 실행",
+      "perfectionism": "불만·교정 7.6/100 (중간), 짧은 후속 지시 34.4%, 첫 지시 중앙값 29자",
+      "exploration": "완곡·탐색 19.7/100 (1위) vs 강조·단정 0.0·속도·긴급 0.0"
+    },
+    "rhythm": "07~10시·13~15시 두 봉우리, 19시 이후·주말 0건. 프롬프트 간격 중앙값 188초, 지시 실행 중앙값 42초. 세션을 며칠씩 열어두고 이어 씀(12개 중 4개가 2일 이상)",
+    "interest": "어휘: 이벤트·카테고리·배너·카드·상품(BO 운영 화면) + 개발명세·명세·기획서·회의록(문서). 도구: Figma MCP 22·캘린더 26·Artifact 25 — 코드 편집(Edit 24)보다 문서·검토 산출물이 많음",
+    "definition": "이 사람은 짧게 시키고 바로 확인하며, 명령보다 질문으로 AI 를 조향해 BO 화면과 그 명세를 함께 만드는 개발자다",
+    "teammate_tips": [
+      "Figma 기획서 → 검토 HTML → 명세 md 로 이어지는 문서 파이프라인이 있다 (사례 1·3). 기획 검토가 필요하면 이 흐름을 빌려 쓰면 된다",
+      "외부망(폐쇄망) 모델에 넘길 명세를 플레인 텍스트 단일 파일로 만드는 노하우가 있다 — 망분리 환경에서 AI 를 쓰는 파트원에게 유용",
+      "근무 시간 안에서만 쓰고(19시 이후 0건) 세션을 며칠 열어둔다 — 같은 브랜치를 건드릴 땐 열어둔 세션이 있는지 한 번 물어보면 충돌을 피한다"
+    ]
+  },
+  "fun": {
+    "mbti": {
+      "value": "ISTP",
+      "strength": "약함",
+      "basis": "I: 서브에이전트 3%·단일 스레드 / S: 파일 경로·Figma 링크 직접 붙이는 구체 지시 / T: 칭찬·수용 3.2 vs 사과·완충 0.6, 존댓말 0% / P: plan 명령 0건, '일단' 20회"
+    },
+    "age_band": {
+      "value": "30대 중후반",
+      "strength": "약함",
+      "basis": "ㅋㅋ/ㅎㅎ 0 · 이모지 0 · 말줄임표 0 · 존댓말 0 (반말 76%) · 07시대 시작 31건 · 야간 0건 — 아침형 업무 톤"
+    },
+    "blood_type": {
+      "value": "O형",
+      "strength": "없음(무작위)",
+      "basis": "데이터 신호 0. 굳이 붙이자면 '일단 해보고 확인하는' 스타일이 O형 통념과 맞아 보인다는 억지 논리 한 줄"
+    },
+    "nickname": "일단 해보고 맞지? 하는 아침형 검토자",
+    "pair_programming": "긴 설계 토론보다 '일단 이것부터' 하고 화면을 같이 보며 고치는 방식이 잘 맞을 것이다. '맞지?'·'왜 그렇게 한거야'가 자주 나오니 결정의 이유를 한 줄씩 붙여 답하면 대화가 빨라진다. 오전 7~10시가 가장 활발하니 페어링은 오전에 잡는 게 좋다."
+  },
+  "expert_index": {
+    "formula_version": 1,
+    "score": 31,
+    "level": "견습",
+    "emoji": "🔧",
+    "breakdown": {
+      "volume": 9.0,
+      "automation": 2.8,
+      "delegation": 1.7,
+      "assets": 15.0,
+      "omc": 2.1
+    },
+    "inputs": {
+      "sessions_long": 12,
+      "automation_depth": 5.5,
+      "subagent_msg_ratio": 0.03,
+      "asset_points": 9,
+      "omc_ratio": 0.01,
+      "distinct_commands": 1
+    }
+  },
+  "feedback": {
+    "works_well": [
+      "Figma 기획서 검토·명세 작성 — Figma MCP 22회·Artifact 25회·artifact-design 27회 로드, 사례 1·3 에서 검토 HTML + 명세 md 가 11~41턴 안에 나옴",
+      "신규 화면 초안 대량 생성 — 사례 2: 25턴에 47파일(컴포넌트·유틸·테스트·목), 자동화 심도 8.9배",
+      "운영 잡무(캘린더·회의록·위키 인제스트) — 캘린더 MCP 26회, 사례 4·5. 파일 변경 없이도 산출물이 나오는 작업"
+    ],
+    "works_poorly": [
+      "사람 확인이 많은 데이터 입력 — 사례 4 AskUserQuestion 9회. 원천이 사람 머리에 있는 작업은 턴이 늘어남",
+      "긴 세션의 컨텍스트 유지 — 세션 4개가 2일 이상 지속, 최장 지시 76,708초. 열어둔 세션을 이어 쓰면 초기 지시가 희석됨",
+      "외부망·타 모델과의 핸드오프 — 마크다운이 클립보드 전달에서 충돌해 플레인 텍스트로 우회. 망분리 환경 자체가 마찰"
+    ],
+    "blockers": [
+      "BO(zenith)·프론트(atlas)·API 세 레포에 걸친 eventTarget 필터링 이슈 — 로컬에 레포가 다 있지 않아 소유 레포부터 찾아야 했음(세션 904e51b4, 4턴 12회). 다중 레포 추적이 한 세션에서 막힌 사례"
+    ],
+    "proposals": [
+      "파트 공용 CLAUDE.md 에 SR→dev→stg→prod 배포 흐름과 레포 소유 지도(zenith/atlas/API 담당) 표준화 — 위 막힘 패턴이 레포 지도 부재에서 왔음",
+      "Figma 기획서 검토 스킬 공유 — viz 처럼 검토 결과를 HTML 로 뽑는 절차를 파트 스킬로 두면 산출물 형식이 통일됨",
+      "OMC 자율 모드(ralph·ultrawork·team) 실습 세션 — 본인 포함 OMC 비중 1.0%·서브에이전트 3%. 다파일 생성은 병렬화 여지가 큼"
+    ]
+  },
+  "script_commit": "c810bda"
+}
