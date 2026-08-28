@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "part": "세일즈플러스",
+  "name": "고윤지",
+  "date": "2026-08-28",
+  "role": "다이렉트 보장분석",
+  "highlight": "없음",
+  "env": {
+    "claude_code": "2.1.231",
+    "os": "Darwin 24.6.0",
+    "python": "3.9.6"
+  },
+  "coverage": {
+    "history": {
+      "from": "2026-04-06",
+      "to": "2026-08-28"
+    },
+    "session_stats": {
+      "from": "2026-04-07",
+      "to": "2026-08-28"
+    },
+    "transcripts": {
+      "from": "2026-07-27",
+      "to": "2026-08-28"
+    },
+    "speech_sample_size": 1806,
+    "failed_items": []
+  },
+  "summary": {
+    "one_liner": "Claude Code 를 보험 보장분석 백엔드(코어 로직 수정·IF 스펙 반영·크로스 레포 호출 추적) 용도로, 짧게 던지고 곧바로 로그·실행 결과로 되받아 확인하는 방식으로, 주로 jupiter 프로젝트에서 쓴다",
+    "habit": "\"확인해봐\" — 종결 표현 1위(105회)이자 검증요구 마커 17.4/100건으로 전 마커 중 1위. 시키는 것과 확인하는 것이 같은 빈도다",
+    "effect": "한 지시 중앙값 36.7초로 517건이 돌아 합계 29.7시간을 대신 처리했고, IF 필드명 일괄 변경을 24개 파일 단위로 한 번에 반영했다",
+    "pain": "불만·교정 마커 17.1/100건(2위)과 짧은 후속 지시 24.8% — 한 번에 원하는 결과가 나오지 않아 되짚는 비용이 상시로 붙는다"
+  },
+  "scale": {
+    "sessions_long": 89,
+    "active_months": 5,
+    "tool_calls_long": 8362,
+    "natural_prompts": 1847,
+    "slash_prompts": 59,
+    "subagent_msgs_30d": 1601,
+    "tok_out_30d": 1718190,
+    "thinking_tok_30d": 256726,
+    "tok_cache_read_30d": 1361443220,
+    "sessions_by_month": [
+      [
+        "2026-04",
+        38
+      ],
+      [
+        "2026-05",
+        20
+      ],
+      [
+        "2026-06",
+        14
+      ],
+      [
+        "2026-07",
+        9
+      ],
+      [
+        "2026-08",
+        8
+      ]
+    ],
+    "prompts_by_month": [
+      [
+        "2026-04",
+        404
+      ],
+      [
+        "2026-05",
+        498
+      ],
+      [
+        "2026-06",
+        345
+      ],
+      [
+        "2026-07",
+        187
+      ],
+      [
+        "2026-08",
+        474
+      ]
+    ],
+    "by_hour": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      17,
+      207,
+      228,
+      212,
+      121,
+      1,
+      289,
+      253,
+      237,
+      272,
+      39,
+      30,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "by_dow": [
+      [
+        "Mon",
+        260
+      ],
+      [
+        "Tue",
+        309
+      ],
+      [
+        "Wed",
+        618
+      ],
+      [
+        "Thu",
+        296
+      ],
+      [
+        "Fri",
+        425
+      ],
+      [
+        "Sat",
+        0
+      ],
+      [
+        "Sun",
+        0
+      ]
+    ],
+    "rhythm_note": "8~19시에만 활동하고 0~6시·20시 이후는 0건, 12시는 단 1건으로 점심에 확실히 손을 뗀다. 토·일 각 0건. 봉우리는 13시(289)·16시(272)·14시(253). 요일은 수(618)에 몰리고 월(260)이 가장 가볍다. 세션당 프롬프트가 4월 10.6 → 8월 59.3 으로 늘어 자주 켜는 방식에서 길게 붙잡는 방식으로 바뀌었다"
+  },
+  "projects_top": [
+    {
+      "project": "hanwha-dev-jupiter",
+      "sessions": 5,
+      "active_days": 21,
+      "human_turns": 413,
+      "tool_calls": 1935,
+      "main_model": "claude-opus-4-6",
+      "period": "2026-07-27 ~ 2026-08-26"
+    },
+    {
+      "project": "hanwha-dev-mars",
+      "sessions": 3,
+      "active_days": 8,
+      "human_turns": 86,
+      "tool_calls": 320,
+      "main_model": "claude-opus-4-6",
+      "period": "2026-07-31 ~ 2026-08-26"
+    },
+    {
+      "project": "hanwha-dev-hc3i",
+      "sessions": 1,
+      "active_days": 3,
+      "human_turns": 18,
+      "tool_calls": 52,
+      "main_model": "claude-opus-4-6",
+      "period": "2026-08-04 ~ 2026-08-13"
+    },
+    {
+      "project": "yunji-dev",
+      "sessions": 1,
+      "active_days": 1,
+      "human_turns": 2,
+      "tool_calls": 8,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-28 ~ 2026-08-28"
+    },
+    {
+      "project": "yunji-dev-members",
+      "sessions": 1,
+      "active_days": 1,
+      "human_turns": 1,
+      "tool_calls": 2,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-28 ~ 2026-08-28"
+    }
+  ],
+  "projects_other_count": 0,
+  "workflow": {
+    "automation_depth": 4.5,
+    "turn_duration": {
+      "n": 517,
+      "median_sec": 36.7,
+      "p25_sec": 19.8,
+      "p75_sec": 76.2,
+      "p90_sec": 181.7,
+      "max_sec": 55378.8,
+      "mean_sec": 206.7,
+      "total_sec": 106881.4,
+      "buckets": [
+        [
+          "1분 이하",
+          355
+        ],
+        [
+          "1~5분",
+          132
+        ],
+        [
+          "5~15분",
+          25
+        ],
+        [
+          "15~60분",
+          2
+        ],
+        [
+          "1시간 초과",
+          3
+        ]
+      ]
+    },
+    "tools_top": [
+      [
+        "Bash",
+        806
+      ],
+      [
+        "Edit",
+        535
+      ],
+      [
+        "Read",
+        477
+      ],
+      [
+        "Grep",
+        413
+      ],
+      [
+        "Write",
+        55
+      ],
+      [
+        "Agent",
+        24
+      ],
+      [
+        "Glob",
+        13
+      ],
+      [
+        "AskUserQuestion",
+        11
+      ],
+      [
+        "mcp__plugin_oh-my-claudecode_t__wiki_add",
+        5
+      ],
+      [
+        "Skill",
+        1
+      ]
+    ],
+    "omc": {
+      "commands": [
+        [
+          "ultrawork",
+          22
+        ],
+        [
+          "ralph",
+          6
+        ],
+        [
+          "omc-setup",
+          3
+        ],
+        [
+          "team",
+          2
+        ],
+        [
+          "deepinit",
+          1
+        ],
+        [
+          "ccg",
+          1
+        ]
+      ],
+      "distinct_commands": 6,
+      "prompts_with_omc": 35,
+      "prompts_total": 1908,
+      "omc_ratio": 0.018,
+      "slash_omc_ratio": 0.164,
+      "keyword_ratio": 0.014,
+      "keyword_forms": [
+        [
+          "ulw",
+          19
+        ],
+        [
+          "ralph",
+          6
+        ]
+      ],
+      "by_month": [
+        [
+          "2026-04",
+          23
+        ],
+        [
+          "2026-05",
+          8
+        ],
+        [
+          "2026-07",
+          1
+        ],
+        [
+          "2026-08",
+          3
+        ]
+      ]
+    },
+    "subagent_types": [
+      [
+        "Explore",
+        4
+      ],
+      [
+        "oh-my-claudecode:executor",
+        2
+      ]
+    ],
+    "subagent_msg_ratio": 0.36,
+    "models": [
+      [
+        "claude-opus-4-6",
+        0.77
+      ],
+      [
+        "claude-opus-5",
+        0.13
+      ],
+      [
+        "claude-sonnet-4-6",
+        0.04
+      ],
+      [
+        "claude-opus-4-8",
+        0.03
+      ],
+      [
+        "claude-haiku-4-5-20251001",
+        0.03
+      ],
+      [
+        "<synthetic>",
+        0.0
+      ]
+    ],
+    "effort": [
+      [
+        "high",
+        1.0
+      ]
+    ],
+    "permission_mode": [
+      [
+        "default",
+        0.59
+      ],
+      [
+        "acceptEdits",
+        0.25
+      ],
+      [
+        "auto",
+        0.16
+      ]
+    ],
+    "mcp_servers": [
+      [
+        "plugin_oh-my-claudecode_t",
+        6
+      ]
+    ],
+    "skills": [
+      [
+        "init",
+        15
+      ],
+      [
+        "ultrawork",
+        4
+      ],
+      [
+        "oh-my-claudecode:omc-setup",
+        2
+      ],
+      [
+        "team",
+        2
+      ],
+      [
+        "oh-my-claudecode:ultrawork",
+        2
+      ],
+      [
+        "setup",
+        1
+      ],
+      [
+        "oh-my-claudecode:hud",
+        1
+      ],
+      [
+        "oh-my-claudecode:mcp-setup",
+        1
+      ],
+      [
+        "omc-setup",
+        1
+      ],
+      [
+        "oh-my-claudecode:ralph",
+        1
+      ]
+    ],
+    "style_note": "짧은 지시(중앙값 34자, 1문장 78.3%)를 던지고 4.5회의 도구 실행으로 돌려받은 뒤 중앙값 36.7초 만에 확인하고 곧바로 다음 지시를 낸다. 도구는 읽기·검색·수정·실행에 98% 이상이 몰려 있고 새 파일 작성은 2.3%뿐이라 신규 개발보다 기존 서비스 코드를 정확히 짚어 고치는 일에 쓴다. 자율 모드(ulw)는 자주 쓰지 않지만(1.8%) 한 번 걸면 길게 돌린다 — 1시간 초과 지시 3건, 최장 15.4시간. 모델은 Opus·high effort 로 고정하고 권한은 default(59%)를 유지해 실행 전 확인을 받는다."
+  },
+  "speech": {
+    "politeness": {
+      "formal": 0.0,
+      "casual": 0.81,
+      "noun": 0.19
+    },
+    "endings_top": [
+      [
+        "확인해봐",
+        105
+      ],
+      [
+        "해줘",
+        94
+      ],
+      [
+        "있어",
+        58
+      ],
+      [
+        "알려줘",
+        57
+      ],
+      [
+        "수정해줘",
+        41
+      ]
+    ],
+    "first_words_top": [
+      [
+        "지금",
+        108
+      ],
+      [
+        "근데",
+        99
+      ],
+      [
+        "그럼",
+        82
+      ],
+      [
+        "아니",
+        63
+      ],
+      [
+        "아",
+        60
+      ]
+    ],
+    "vocab_top": [
+      [
+        "지금",
+        249
+      ],
+      [
+        "근데",
+        164
+      ],
+      [
+        "그럼",
+        142
+      ],
+      [
+        "해줘",
+        131
+      ],
+      [
+        "확인해봐",
+        119
+      ],
+      [
+        "부분",
+        101
+      ],
+      [
+        "다시",
+        89
+      ],
+      [
+        "로직",
+        86
+      ],
+      [
+        "로그",
+        80
+      ],
+      [
+        "있어",
+        77
+      ]
+    ],
+    "markers_per_100": {
+      "불만·교정": 17.1,
+      "완곡·탐색": 4.9,
+      "검증요구": 17.4,
+      "강조·단정": 1.7,
+      "칭찬·수용": 5.1,
+      "위임·자율": 1.4,
+      "속도·긴급": 0.2,
+      "범위한정": 0.8,
+      "설명요구": 6.0,
+      "사과·완충": 0.2
+    },
+    "len_chars": {
+      "median": 34,
+      "p90": 77,
+      "max": 1280
+    },
+    "sentences_per_prompt": 1.31,
+    "gap_sec": {
+      "median": 132,
+      "p25": 68,
+      "p90": 982
+    },
+    "short_followup_ratio": 0.248,
+    "laugh_prompts": 1,
+    "emoji_prompts": 0,
+    "korean_prompts": 1806,
+    "non_korean_prompts": 41,
+    "english_mixed_ratio": 0.555,
+    "punctuation": {
+      "question": 653,
+      "exclaim": 12,
+      "none_ratio": 0.74
+    },
+    "style_summary": [
+      "존댓말 0.1% · 문장부호 생략 74.3% — 사교적 완충을 걷어내고 정보 밀도만 남긴 엔지니어링 레지스터를 쓴다. 격식이 없는 게 아니라 군더더기가 없다",
+      "종결 1위가 \"확인해봐\"(105회), 마커 1·2위가 검증요구(17.4)·불만·교정(17.1) — 지시와 검증을 한 호흡에 붙이는 드문 지문이다. 결과를 받는 즉시 반증을 건다",
+      "첫 단어가 지금(108)·근데(99)·아니(63)로 이어지고 물음표가 653개(느낌표의 54배) — 단정으로 밀어붙이지 않고 질의로 수렴시킨다. 강조·단정 1.7 대비 완곡·탐색 4.9 로 2.9:1"
+    ],
+    "reproduced_prompts": [
+      "지금 GuaranteeItemCode 매핑 어디서 깨지는지 스택 찍어서 확인해봐",
+      "근데 이 응답 캐시 태우면 hc3i 쪽 정합성 안 깨지나 영향도부터 알려줘",
+      "아니 재현부터 하자 실패 케이스 로그만 따로 묶어줘"
+    ]
+  },
+  "assets": {
+    "counts": {
+      "global_claude_md": 1,
+      "rules": 0,
+      "agents": 0,
+      "commands": 0,
+      "skills": 1,
+      "hooks": 0,
+      "permissions_allow": 0,
+      "statusline": true,
+      "mcp_servers": 2,
+      "plugins": 2,
+      "project_claude_md": 6
+    },
+    "share_worthy": [
+      {
+        "asset": "jupiter/CLAUDE.md (16,510 bytes)",
+        "reason": "파트에서 가장 큰 도메인 규약 문서. 보장분석 IF 코드·필드 명명이 mars·luna·hc3i 에 반복되므로 공용 템플릿으로 뽑으면 재지시(24.8%)를 줄일 수 있다"
+      },
+      {
+        "asset": "members/.claude/commands/진단.md",
+        "reason": "반복 절차를 슬래시 커맨드로 고정한 유일한 사례. 배포 점검·IF 스펙 반영 같은 파트 공통 작업도 같은 형태로 만들 수 있다는 실물 예시"
+      },
+      {
+        "asset": "전역 CLAUDE.md (6,001 bytes)",
+        "reason": "위임·모델 라우팅·검증을 한 파일로 정리해둔 것. OMC 를 처음 붙이는 파트원의 출발점으로 쓸 만하다"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "title": "보장분석 코어 전략 전면 수술 (21일 연속 세션)",
+      "project": "jupiter",
+      "when": "2026-08-03 ~ 2026-08-24",
+      "task": "가망고객 미등록 케이스의 코드 처리 방식 파악에서 출발해 보장분석 코어 전략·항목 코드 체계를 재정비",
+      "how": "Bash 401 · Edit 386 · Read 297 · Grep 290 · Write 36. 서브에이전트·스킬 없이 전량 직접 지시. claude-opus-4-6 2,568 + claude-sonnet-4-6 149",
+      "human_turns": 325,
+      "tool_calls": 1437,
+      "outcome": "33개 파일 · feature/cva-guarantee-analysis → -v2. 최다 수정 GuaranteeItemCode.java 94회 · CvaGuaranteeAnalysisCoreStrategy.java 84회",
+      "saving": "읽기·검색 587회(Read 297+Grep 290)를 수작업 1분/건으로 잡으면 탐색만 약 9.8시간. 편집 386회 포함 시 하한선으로 하루 이상 (근거: 세션 top_tools 실측, 분당 환산은 추정)"
+    },
+    {
+      "title": "IF 응답 스펙 변경 일괄 반영 (서브에이전트 위임)",
+      "project": "jupiter",
+      "when": "2026-07-29 ~ 2026-08-03",
+      "task": "결과 조회 IF 필드명 5종 변경·신규 추가를 코드 전체에 반영",
+      "how": "Read 90 · Edit 67 · Grep 43 · Bash 27 · Write 9. 서브에이전트를 실제로 쓴 유일한 사례군 — Explore 3 · oh-my-claudecode:executor 2. claude-opus-4-6 336 + claude-haiku-4-5 82",
+      "human_turns": 42,
+      "tool_calls": 241,
+      "outcome": "24개 파일 · feature/cva-guarantee-analysis. GuaranteeAnalysisCoreService.java 10회 · GuaranteeAnalysisService.java 7회 · InsuranceAnalysisService.java 6회, 부수적으로 docs/create_ppt.py 6회",
+      "saving": "필드 5종 × 24개 파일을 누락 없이 치환·검증하는 작업. 수작업이면 필드당 30분 + 회귀 확인으로 3시간 이상, 실제로는 42턴 (근거: files_touched_n 24, 필드 5종은 첫 지시에 명시)"
+    },
+    {
+      "title": "크로스 레포 호출 흐름 추적 (7턴짜리 정밀 타격)",
+      "project": "mars",
+      "when": "2026-08-26",
+      "task": "보장분석 FP 접근요청 생성 시 custId 가 어디서 어떻게 넘어오는지 확인하고 확인된 흐름대로 수정",
+      "how": "Bash 43 · Edit 18 · Read 5 · AskUserQuestion 4 · Write 1. claude-opus-5 130. mars·luna·jupiter 세 저장소를 한 세션에서 동시에 수정",
+      "human_turns": 7,
+      "tool_calls": 71,
+      "outcome": "7개 파일 · feature/ga-cust-id + main. mars SalesInqueryHandler.kt 6회 · jupiter FpAccessService.java 4회 · luna SalesService.kt 3회",
+      "saving": "한 지시당 도구 10.1회로 전체 평균 4.5회의 2.2배. 세 저장소 호출 체인 추적은 수작업이면 1~2시간 (근거: 세션 05:41~07:33, human_turns 7)"
+    },
+    {
+      "title": "신규 IF 엔드포인트 추가 (다른 저장소, 스펙 기반 반복 작업)",
+      "project": "hc3i",
+      "when": "2026-08-04 ~ 2026-08-13",
+      "task": "cvaDrctRsltInfoMgmtPSI002r 추가 — 요청·응답 규격을 기존 PSI001r 과 동일하게 맞춰 신설",
+      "how": "Read 17 · Grep 14 · Bash 11 · Write 4 · Glob 4 · Edit 2. 서브에이전트 없음. claude-opus-4-6 86. Write 가 Edit 보다 많은 유일한 사례",
+      "human_turns": 18,
+      "tool_calls": 52,
+      "outcome": "5개 파일 · main. CvaDrctRsltInfoMgmtPSI002rDto.kt · 동명 Controller · CvaCalcBaseInfoMgmtPSI002cDto.kt · 동명 Controller · IcsPrctCustPltfPSI006rDto.kt",
+      "saving": "기존 PSI001r 복제형 정형 작업. 엔드포인트당 수작업 40분 기준 2개면 약 1.3시간, 실제 18턴 (근거: files_touched 5개가 DTO/Controller 쌍 구조)"
+    },
+    {
+      "title": "개발 토큰 발급 환경 정비 + 지식 축적",
+      "project": "jupiter",
+      "when": "2026-08-24 ~ 2026-08-26",
+      "task": "개발용 JWT 토큰 발급 경로를 정리해 로컬 검증을 가능하게 만들고 알아낸 내용을 wiki 로 남김",
+      "how": "Bash 223(전체의 87%) · Edit 14 · wiki_add 5 · AskUserQuestion 4 · Read 4. 스킬 oh-my-claudecode:wiki 43회. claude-opus-5 352 + claude-opus-4-8 145",
+      "human_turns": 43,
+      "tool_calls": 256,
+      "outcome": "7개 파일 · feature/cva-guarantee-analysis-v2. DevTokenController.java 6회 · JwtTokenProvider.java 3회 · JWTAuthorization.java 2회, 스크래치패드에 gen_app_token.py 생성",
+      "saving": "본체는 반복 실행·확인(Bash 223회). 진짜 성과는 시간 절감보다 wiki 5건으로 남겨 다음 세션에서 다시 헤매지 않게 한 것 (근거: skills 에 wiki 43회, 인증 계열 파일 3개)"
+    }
+  ],
+  "profile": {
+    "axes": {
+      "delegation": 3,
+      "verification": 5,
+      "planning": 2,
+      "perfectionism": 4,
+      "exploration": 4
+    },
+    "axes_evidence": {
+      "delegation": "위임·자율 마커 1.4/100(10종 중 7위), Agent 호출 24회(도구의 1.0%), permission default 59%. 반면 서브에이전트 메시지 비중 36%(1,601/4,402) — 말로는 위임하지 않지만 한 번 자율 모드를 걸면 길게 맡긴다",
+      "verification": "검증요구 17.4/100 으로 10종 중 1위, 종결 1위가 \"확인해봐\"(105회), 물음표 653개(느낌표의 54배), Bash 806회(도구의 34.4%)로 직접 실행 확인",
+      "planning": "plan 계열 스킬·명령 0회, 프롬프트 중앙값 34자 · 1문장 78.3%, 첫 단어 1위 \"지금\"(108) — 설계보다 일단 짚고 시작",
+      "perfectionism": "불만·교정 17.1/100(2위), 짧은 후속 지시 24.8%, 첫 단어 \"근데\" 99 · \"아니\" 63, 한 세션에서 GuaranteeItemCode.java 94회 수정",
+      "exploration": "완곡·탐색 4.9 vs 강조·단정 1.7 로 2.9:1 탐색 우세, 설명요구 6.0(3위), 속도·긴급 0.2"
+    },
+    "rhythm": "8~19시 평일에만 활동(0~6시·20시 이후 0건, 12시 1건, 토·일 0건). 봉우리는 13시(289)·16시(272). 프롬프트 간격 중앙값 132초로 반응형이며, 세션당 프롬프트가 4월 10.6 → 8월 59.3 으로 늘어 길게 붙잡는 방향으로 바뀌었다",
+    "interest": "어휘 지문 상위 내용어가 로직 86 · 로그 80 · 보장분석 69 · 응답 60 · 호출 53 · 경로 36 · 오류 35. 도구는 Read+Grep 38.0% 탐색, Edit 22.8% 수정, Write 2.3%. 주력은 jupiter(보장분석 코어) 413턴이고 mars·luna·hc3i 로 연계 IF 를 따라다닌다 — 말하는 것과 하는 것이 일치한다",
+    "definition": "이 사람은 작게 묻고 로그로 확인하며 코어 로직을 정확한 자리까지 밀어붙이는 개발자다",
+    "teammate_tips": [
+      "\"확인해봐\"가 나오면 반려가 아니라 절차다. 검증요구 17.4/100 은 기본 리듬이지 불신이 아니다 — 로그·실행 결과를 먼저 붙여 넘기면 왕복이 크게 준다",
+      "첫 지시는 짧게 온다(중앙값 34자 · 1문장 78.3%). 배경을 다 적는 스타일이 아니므로 애매하면 되묻는 편이 빠르다. 물음표 653개가 말해주듯 질문에 열려 있고 속도·긴급 마커는 0.2로 재촉하지 않는다",
+      "8~19시 평일에만 활동하고 12시와 주말은 완전히 비어 있다. 야간·주말 요청은 답이 없는 게 정상이며, 대신 근무시간 중 회신 간격은 중앙값 2분대로 매우 빠르다"
+    ]
+  },
+  "fun": {
+    "mbti": {
+      "value": "ISTP",
+      "strength": "약함",
+      "basis": "E/I → 위임·자율 1.4/100 · Agent 호출 1.0%로 혼자 파고드는 쪽(I). S/N → 중앙값 34자에 필드명을 직접 지정, 어휘가 로직·로그·응답 같은 구체어(S). T/F → 칭찬·수용 5.1 vs 사과·완충 0.2 로 25배 차이(T). J/P → plan 계열 0회 · 첫 단어 \"지금\" 108 로 바로 착수(P)"
+    },
+    "age_band": {
+      "value": "30대 초중반",
+      "strength": "약함",
+      "basis": "ㅋㅋ/ㅎㅎ 1건 · 이모지 0건 · 말줄임표 6건으로 절제돼 있는데 첫 단어에 \"우웅\" 49 · \"웅\" 45 · \"오케이\" 47 같은 구어체 감탄사가 살아 있다. 존댓말 0.1%로 격식 없이 쓰고 야간 0% · 주말 0%로 생활 리듬이 확실하다"
+    },
+    "blood_type": {
+      "value": "A형",
+      "strength": "없음(무작위)",
+      "basis": "데이터 신호 0. 굳이 억지를 부리자면 12시 프롬프트가 1건뿐이고 주말이 0건인 칼같은 생활 규칙성이 A형 스테레오타입과 맞는다 — 물론 아무 근거 없다"
+    },
+    "nickname": "로그로 말하는 사람",
+    "pair_programming": "화면에 로그를 띄워놓고 시작하면 된다. 물음표 653개가 말해주듯 질문을 계속 던지지만 속도·긴급 마커는 0.2 라 재촉하지 않으니 조급해할 필요 없이 근거만 같이 보면 된다. 다만 첫 지시가 34자로 짧게 오므로 범위를 먼저 합의하고 들어가면 짧은 후속 지시 24.8%가 눈에 띄게 줄어들 것이다."
+  },
+  "expert_index": {
+    "formula_version": 1,
+    "score": 62,
+    "level": "전문가",
+    "emoji": "🧠",
+    "breakdown": {
+      "volume": 15.8,
+      "automation": 2.2,
+      "delegation": 20.0,
+      "assets": 13.3,
+      "omc": 10.7
+    },
+    "inputs": {
+      "sessions_long": 89,
+      "automation_depth": 4.5,
+      "subagent_msg_ratio": 0.36,
+      "asset_points": 8,
+      "omc_ratio": 0.018,
+      "distinct_commands": 6
+    }
+  },
+  "feedback": {
+    "works_well": [
+      "IF 스펙 변경 일괄 반영 — 필드명 5종을 24개 파일에 반영하는 작업을 사람 발화 42턴으로 처리",
+      "크로스 레포 호출 흐름 추적 — mars·luna·jupiter 세 저장소를 한 세션에서 훑어 custId 전달 경로 확정. 한 지시당 도구 10.1회로 평균 4.5회의 2.2배",
+      "정형 엔드포인트 증설 — 기존 PSI001r 규격을 복제해 DTO·Controller 신설, 18턴 / 52회로 완료"
+    ],
+    "works_poorly": [
+      "사전 설계가 필요한 큰 변경 — plan 계열 스킬 0회, 1문장 프롬프트 78.3%로 시작해 같은 파일을 94회 고치며 수렴시킨다",
+      "위임 자체 — 위임·자율 1.4/100, Agent 호출 24회(1.0%), 서브에이전트를 실제로 쓴 세션은 1건. 자율 모드도 4월 23건 → 8월 3건으로 감소",
+      "반복 확인 비용 — 검증요구 17.4 · 불만·교정 17.1 이 마커 1·2위이고 짧은 후속 지시 24.8%. 결과 신뢰가 쌓이지 않아 왕복이 상시로 붙는다"
+    ],
+    "blockers": [
+      "한 지시가 15.4시간(55,378.8초) 방치 — 2026-08-20 jupiter 세션. 1시간 초과 지시 3건이고 최장 5건 중 4건이 jupiter·mars. 자율 실행을 걸어놓고 확인 시점이 늦어지는 구간이 있다",
+      "인증·초기 진입 반복 — /login 12회 · /init 15회. 로그인 실패로 시작해 도구 호출 0으로 끝난 세션이 있고, 개발 토큰 발급 정비에만 Bash 223회를 썼다",
+      "버전 혼재 — 트랜스크립트에 2.1.84(17,676)와 2.1.231(3,439)이 섞여 있고 전역 스킬은 .retired-4.10.2 만 남아 있다. OMC 5.0.0 에서 제거된 ccg(1회)·ultrawork(22회)를 계속 부른 흔적이 있다"
+    ],
+    "proposals": [
+      "보장분석 IF 규약을 파트 공용 CLAUDE.md 로 승격 — jupiter(16.5KB)·mars(6.5KB)·luna(4.7KB)에 흩어진 규약을 모으면 저장소를 넘나드는 작업의 재지시(24.8%)가 줄어든다",
+      "반복 절차를 슬래시 커맨드로 고정 — members/.claude/commands/진단.md 가 유일한 성공 사례. IF 스펙 반영·개발 토큰 발급 같은 정형 작업을 같은 형태로 만든다",
+      "/verify·/plan 계열 도입 미니 교육 — 검증요구 17.4 로 검증 습관이 최상위인데 검증용 명령을 한 번도 쓰지 않았다. 손으로 하는 확인을 명령으로 옮기기만 해도 효과가 가장 크다"
+    ]
+  },
+  "script_commit": "c810bda"
+}
