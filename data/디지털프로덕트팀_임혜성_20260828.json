@@ -1,0 +1,679 @@
+{
+  "schema_version": 1,
+  "part": "디지털프로덕트팀",
+  "name": "임혜성",
+  "date": "2026-08-28",
+  "role": "백엔드개발",
+  "highlight": "없음",
+  "env": {
+    "claude_code": "2.1.236",
+    "os": "Darwin 25.4.0",
+    "python": "3.9.6"
+  },
+  "coverage": {
+    "history": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "session_stats": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "transcripts": {
+      "from": "2026-08-21",
+      "to": "2026-08-28"
+    },
+    "speech_sample_size": 211,
+    "failed_items": []
+  },
+  "summary": {
+    "one_liner": "Claude Code 를 사내 백엔드 서비스(warp·meteor·photon·comet)의 코드·명세 대조와 장애 원인 추적 용도로, 짧게 묻고 서브에이전트에 크게 위임한 뒤 검증으로 되받는 방식으로, 주로 root-poc 프로젝트에서 쓴다",
+    "habit": "짧게 묻고 반드시 검증으로 되받는다 — 프롬프트 길이 중앙값 34자에 한 문장 비율 71.6% 인데, 검증요구 마커가 8.5/100 으로 1위이고 verifier 서브에이전트를 19회(에이전트 유형 중 1위) 호출했다",
+    "effect": "한 번의 지시가 평균 25.6회의 도구 실행으로 이어진다(5,508/215). 8일 동안 지시들이 실제로 돌아간 시간 합계가 40.6시간이다",
+    "pain": "분석은 되는데 수정 산출로 잘 안 이어진다 — 도구 호출의 88.7%가 Bash 조회인 반면 Edit 16회·Write 7회로, 상위 15개 세션 중 9개가 변경 파일 0건이다"
+  },
+  "scale": {
+    "sessions_long": 20,
+    "active_months": 1,
+    "tool_calls_long": 4261,
+    "natural_prompts": 214,
+    "slash_prompts": 36,
+    "subagent_msgs_30d": 5224,
+    "tok_out_30d": 8351374,
+    "thinking_tok_30d": 3966226,
+    "tok_cache_read_30d": 1333325459,
+    "sessions_by_month": [
+      [
+        "2026-08",
+        20
+      ]
+    ],
+    "prompts_by_month": [
+      [
+        "2026-08",
+        250
+      ]
+    ],
+    "by_hour": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      20,
+      31,
+      39,
+      34,
+      9,
+      1,
+      27,
+      45,
+      25,
+      17,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "by_dow": [
+      [
+        "Mon",
+        47
+      ],
+      [
+        "Tue",
+        46
+      ],
+      [
+        "Wed",
+        56
+      ],
+      [
+        "Thu",
+        53
+      ],
+      [
+        "Fri",
+        48
+      ],
+      [
+        "Sat",
+        0
+      ],
+      [
+        "Sun",
+        0
+      ]
+    ],
+    "rhythm_note": "오전 9시(39건)와 오후 2시(45건) 두 봉우리. 12시는 1건으로 점심시간을 정확히 비우고, 17시 이후 2건·0~6시 0건·주말 0건 — 업무시간 안에서만 쓰는 근무시간형이다. 요일은 수·목·금·월·화에 고르게 퍼져 있다"
+  },
+  "projects_top": [
+    {
+      "project": "root-poc",
+      "sessions": 31,
+      "active_days": 7,
+      "human_turns": 213,
+      "tool_calls": 5388,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-21 ~ 2026-08-28"
+    },
+    {
+      "project": "root-poc-members",
+      "sessions": 1,
+      "active_days": 1,
+      "human_turns": 2,
+      "tool_calls": 2,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-28 ~ 2026-08-28"
+    }
+  ],
+  "projects_other_count": 0,
+  "workflow": {
+    "automation_depth": 25.6,
+    "turn_duration": {
+      "n": 204,
+      "median_sec": 125.8,
+      "p25_sec": 53.3,
+      "p75_sec": 292.5,
+      "p90_sec": 965.5,
+      "max_sec": 55716.9,
+      "mean_sec": 715.8,
+      "total_sec": 146017.3,
+      "buckets": [
+        [
+          "1분 이하",
+          61
+        ],
+        [
+          "1~5분",
+          92
+        ],
+        [
+          "5~15분",
+          29
+        ],
+        [
+          "15~60분",
+          17
+        ],
+        [
+          "1시간 초과",
+          5
+        ]
+      ]
+    },
+    "tools_top": [
+      [
+        "Bash",
+        4883
+      ],
+      [
+        "Read",
+        316
+      ],
+      [
+        "Agent",
+        67
+      ],
+      [
+        "AskUserQuestion",
+        49
+      ],
+      [
+        "ToolSearch",
+        46
+      ],
+      [
+        "SendMessage",
+        29
+      ],
+      [
+        "ListAgents",
+        29
+      ],
+      [
+        "Skill",
+        27
+      ],
+      [
+        "Edit",
+        16
+      ],
+      [
+        "mcp__plugin_oh-my-claudecode_t__lsp_diagnostics",
+        14
+      ]
+    ],
+    "omc": {
+      "commands": [
+        [
+          "ralph",
+          4
+        ],
+        [
+          "omc-setup",
+          1
+        ],
+        [
+          "team",
+          1
+        ]
+      ],
+      "distinct_commands": 3,
+      "prompts_with_omc": 5,
+      "prompts_total": 250,
+      "omc_ratio": 0.02,
+      "slash_omc_ratio": 0.056,
+      "keyword_ratio": 0.014,
+      "keyword_forms": [
+        [
+          "ralph",
+          4
+        ]
+      ],
+      "by_month": [
+        [
+          "2026-08",
+          5
+        ]
+      ]
+    },
+    "subagent_types": [
+      [
+        "oh-my-claudecode:verifier",
+        19
+      ],
+      [
+        "Explore",
+        16
+      ],
+      [
+        "oh-my-claudecode:code-reviewer",
+        10
+      ],
+      [
+        "general-purpose",
+        10
+      ],
+      [
+        "oh-my-claudecode:architect",
+        5
+      ],
+      [
+        "oh-my-claudecode:executor",
+        2
+      ],
+      [
+        "oh-my-claudecode:critic",
+        2
+      ],
+      [
+        "oh-my-claudecode:explore",
+        2
+      ]
+    ],
+    "subagent_msg_ratio": 0.51,
+    "models": [
+      [
+        "claude-opus-5",
+        0.89
+      ],
+      [
+        "claude-sonnet-5",
+        0.1
+      ],
+      [
+        "claude-haiku-4-5-20251001",
+        0.01
+      ],
+      [
+        "<synthetic>",
+        0.0
+      ]
+    ],
+    "effort": [
+      [
+        "xhigh",
+        0.77
+      ],
+      [
+        "high",
+        0.23
+      ]
+    ],
+    "permission_mode": [
+      [
+        "bypassPermissions",
+        0.99
+      ],
+      [
+        "default",
+        0.01
+      ]
+    ],
+    "mcp_servers": [
+      [
+        "plugin_oh-my-claudecode_t",
+        20
+      ],
+      [
+        "claude_ai_Slack",
+        1
+      ]
+    ],
+    "skills": [
+      [
+        "code-review",
+        12
+      ],
+      [
+        "verifier",
+        8
+      ],
+      [
+        "artifact-design",
+        3
+      ],
+      [
+        "artifact-diagramming",
+        2
+      ],
+      [
+        "oh-my-claudecode:omc-setup",
+        1
+      ],
+      [
+        "oh-my-claudecode:hud",
+        1
+      ],
+      [
+        "oh-my-claudecode:ralph",
+        1
+      ],
+      [
+        "oh-my-claudecode:ai-slop-cleaner",
+        1
+      ],
+      [
+        "oh-my-claudecode:cancel",
+        1
+      ]
+    ],
+    "style_note": "짧은 질문을 던지고(중앙값 34자) 나머지는 전부 맡기는 형태다. 도구의 88.7%가 Bash 인데 Edit/Write 는 23회뿐이라, 실제로 하는 일은 코드를 고치는 것보다 코드베이스를 훑어 사실관계를 확인하는 것에 가깝다. 그렇게 얻은 답을 그대로 믿지 않고 verifier·code-reviewer 서브에이전트로 되받는 이중 확인 루프가 서브에이전트 비중 51.5% 를 만들었다. 모델은 opus-5 에 effort xhigh 로 고정하고 권한은 bypassPermissions 로 열어둔 채, 승인 단계를 없애는 대신 결과 검증에 비용을 쓰는 구조다. 반면 계획 수립 도구(plan 계열 0건)와 OMC 명령(2.0%)은 거의 쓰지 않아 자동화의 앞단보다 뒷단에 치우쳐 있다"
+  },
+  "speech": {
+    "politeness": {
+      "formal": 0.0,
+      "casual": 0.73,
+      "noun": 0.27
+    },
+    "endings_top": [
+      [
+        "해줘",
+        16
+      ],
+      [
+        "발송",
+        12
+      ],
+      [
+        "이동",
+        9
+      ],
+      [
+        "알려줘",
+        8
+      ],
+      [
+        "커밋해줘",
+        7
+      ]
+    ],
+    "first_words_top": [
+      [
+        "지금",
+        10
+      ],
+      [
+        "음",
+        10
+      ],
+      [
+        "그럼",
+        8
+      ],
+      [
+        "커밋",
+        8
+      ],
+      [
+        "아",
+        6
+      ]
+    ],
+    "vocab_top": [
+      [
+        "지금",
+        22
+      ],
+      [
+        "그럼",
+        20
+      ],
+      [
+        "발송",
+        20
+      ],
+      [
+        "해줘",
+        18
+      ],
+      [
+        "브랜치",
+        17
+      ],
+      [
+        "커밋",
+        14
+      ],
+      [
+        "타깃",
+        14
+      ],
+      [
+        "반복발송",
+        14
+      ],
+      [
+        "분할",
+        13
+      ],
+      [
+        "푸시",
+        12
+      ]
+    ],
+    "markers_per_100": {
+      "불만·교정": 2.8,
+      "완곡·탐색": 1.9,
+      "검증요구": 8.5,
+      "강조·단정": 1.4,
+      "칭찬·수용": 3.3,
+      "위임·자율": 1.9,
+      "속도·긴급": 0.5,
+      "범위한정": 0.9,
+      "설명요구": 7.1,
+      "사과·완충": 0.5
+    },
+    "len_chars": {
+      "median": 34,
+      "p90": 101,
+      "max": 511
+    },
+    "sentences_per_prompt": 1.69,
+    "gap_sec": {
+      "median": 361,
+      "p25": 149,
+      "p90": 1777
+    },
+    "short_followup_ratio": 0.25,
+    "laugh_prompts": 0,
+    "emoji_prompts": 0,
+    "korean_prompts": 211,
+    "non_korean_prompts": 3,
+    "english_mixed_ratio": 0.682,
+    "punctuation": {
+      "question": 91,
+      "exclaim": 0,
+      "none_ratio": 0.66
+    },
+    "style_summary": [
+      "존댓말이 0%(211건 전부)이고 체언종결이 27.5% — \"meteor로 이동\", \"커밋해줘\" 처럼 군더더기 없이 용건만 던진다",
+      "프롬프트의 43%(91/211)가 물음표로 끝나고 설명요구 마커가 7.1/100 로 2위 — 시키기 전에 먼저 묻고, 답의 이유까지 확인한다",
+      "느낌표·이모지·ㅋㅋ·말줄임표가 전부 0건이고 부호 없이 끝내는 비율이 65.9% — 감정 표현 없이 끝까지 건조하게 유지된다"
+    ],
+    "reproduced_prompts": [
+      "그럼 warp에서 배치 돌 때 미분할 타깃도 같이 잡히는 건가?",
+      "음 그 부분 로그부터 확인해줘. 왜 그렇게 되는지도 알려줘",
+      "오케이 그럼 예약발송 쪽은 그대로 두고 반복발송만 먼저 정리하자"
+    ]
+  },
+  "assets": {
+    "counts": {
+      "global_claude_md": 1,
+      "rules": 0,
+      "agents": 0,
+      "commands": 1,
+      "skills": 1,
+      "hooks": 0,
+      "permissions_allow": 92,
+      "statusline": true,
+      "mcp_servers": 0,
+      "plugins": 2,
+      "project_claude_md": 2
+    },
+    "share_worthy": [
+      {
+        "asset": "전역 CLAUDE.md (4,937B) 의 위임·검증 프로토콜",
+        "reason": "권한은 열고 검증으로 되받는 구조가 서브에이전트 비중 51.5%, 검증요구 마커 8.5/100 이라는 실측치로 효과가 확인됐다. 파트 공용 CLAUDE.md 초안으로 그대로 쓸 만하다"
+      },
+      {
+        "asset": "커스텀 슬래시 커맨드 verifier.md",
+        "reason": "검증을 매번 말로 요청하지 않고 커맨드로 고정한 사례다. verifier 서브에이전트 19회로 실제 가장 많이 쓴 에이전트이기도 해 파트 공통 커맨드로 승격할 가치가 있다"
+      },
+      {
+        "asset": "권한 허용목록 92건",
+        "reason": "현재 bypassPermissions 99% 로 쓰고 있어 활용도는 낮지만 목록은 이미 축적돼 있다. 공유하면 다른 사람이 bypass 없이도 승인 프롬프트를 줄이며 시작할 수 있다"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "title": "예약발송 푸시가 발송시점에 걸릴 때의 스케줄 처리 확인과 수정",
+      "project": "root-poc / warp",
+      "when": "2026-08-26",
+      "task": "결재완료·예약발송·타깃연동 푸시가 1시에 발송대기로 바뀔 때 9시 발송 예정 건이 어떻게 처리되는지 경계 케이스 확인 및 수정",
+      "how": "claude-opus-5 단일. Bash 331·AskUserQuestion 5·Read 4·Edit 4. code-review 170·verifier 89 등장, general-purpose 서브에이전트 2회",
+      "human_turns": 23,
+      "tool_calls": 353,
+      "outcome": "PushScheduleService(2회)·PushCustomRepository·PushCustomRepositoryImpl 3개 클래스 수정",
+      "saving": "도구 353회 중 331회가 Bash 코드 조회. 배치 상태 전이를 3개 클래스에 걸쳐 사람이 추적할 때 조회 1회당 30초로 가정하면 약 2.8시간 분량이며 실제 사람 개입은 23턴이었다 (가정값 기반 추정)"
+    },
+    {
+      "title": "comet /collect 반복 로그의 원인 추적과 자율 정리 루프",
+      "project": "root-poc / comet",
+      "when": "2026-08-26",
+      "task": "/collect 호출 시 쌓이는 LoggingFilter 로그의 원인 규명. 로그 원문을 붙여넣어 시작",
+      "how": "opus-5 64%+sonnet-5 36%. Bash 284·Read 48·Edit 12·lsp_diagnostics 5. ralph(154) 자율 루프와 ai-slop-cleaner(82) 병행 후 cancel(6)로 종료. architect·executor·code-reviewer·critic 4종 서브에이전트",
+      "human_turns": 13,
+      "tool_calls": 379,
+      "outcome": "omc-event-monitor/AGENTS.md 13회 갱신",
+      "saving": "상위 15개 세션 중 유일하게 ralph 자율 루프를 쓴 건으로 사람 13턴에 에이전트 턴 9턴이 발생했다. 원인 추적→정리→리뷰→비평 4단계를 사람이 이어붙이는 수고가 빠졌다 (턴 수 기반 추정)"
+    },
+    {
+      "title": "meteor 로그 동작 확인에서 검증용 테스트 코드 생성까지",
+      "project": "root-poc / meteor",
+      "when": "2026-08-27",
+      "task": "로컬 수정분에서 catch 발생 시 찍히는 로그가 무엇인지 예외 처리 로그 동작 확인",
+      "how": "opus-5 91%+sonnet-5 9%. Bash 213·SendMessage 11·Write 3. code-reviewer 2·verifier 2 서브에이전트. agent_turns 13 으로 상위 15개 세션 중 최다",
+      "human_turns": 6,
+      "tool_calls": 242,
+      "outcome": "Kotlin 테스트 3종 신규 작성 — TmpDetailLogLineVerifyTest.kt·TmpReVerifyTest.kt·TmpEventIdValidationTest.kt",
+      "saving": "사람 6턴만으로 테스트 3개가 나왔다. 로그 확인 질문에서 검증 코드 산출까지 이어진 유일한 사례로 테스트 1건당 사람 개입 2턴꼴이다 (턴 수 기반 추정)"
+    },
+    {
+      "title": "comet metrics 응답 기준 문서화와 배치 흐름 시각화",
+      "project": "root-poc / comet",
+      "when": "2026-08-25",
+      "task": "metrics 라우팅 호출 시 응답하는 데이터 기준을 .md 문서 하나로 정리",
+      "how": "opus-5 93%+haiku-4-5 7%. Bash 383·Read 29·AskUserQuestion 6·Agent 5. verifier 110·code-review 66·artifact-design 5. verifier·explore·executor·code-reviewer 서브에이전트",
+      "human_turns": 17,
+      "tool_calls": 433,
+      "outcome": "push-batch-flow.html 배치 흐름 시각화 산출물",
+      "saving": "문서 요청 하나가 코드 조회 383회로 확장됐다. API 응답 필드 기준을 코드에서 직접 대조해 정리하는 작업이 사람 17턴으로 끝났다 (도구 대비 사람 개입 25:1 기반 추정)"
+    },
+    {
+      "title": "meteor·photon 이벤트 버튼 처리 방식 명세 대조 리뷰",
+      "project": "root-poc / meteor·photon",
+      "when": "2026-08-24",
+      "task": "eventButtonProcess 가 JOIN 만 있는 상태에서 JOIN/LANDING/LANDING_WITHOUT_JOIN 3종 확장이 예정됨. 영문 네이밍 적절성 판단과 누락분 탐색을 동시에 지시",
+      "how": "opus-5 단일. Bash 260·ToolSearch 2·Skill 2·ReportFindings 1. code-review 157(전 세션 최다)·verifier 72. general-purpose 서브에이전트 1",
+      "human_turns": 18,
+      "tool_calls": 267,
+      "outcome": "변경 파일 0건 — 리뷰·판단 산출 세션. ReportFindings 1회로 지적사항이 구조화되어 보고됨",
+      "saving": "두 서비스에 걸친 enum 확장 영향 범위를 사람이 직접 grep 으로 훑는 대신 대조했다. 변경 없이 판단 근거만 얻는 용도라 절감은 시간보다 누락 리스크 감소 쪽이다 (변경 파일 0건 기반 추정)"
+    }
+  ],
+  "profile": {
+    "axes": {
+      "delegation": 4,
+      "verification": 5,
+      "planning": 2,
+      "perfectionism": 3,
+      "exploration": 4
+    },
+    "axes_evidence": {
+      "delegation": "서브에이전트 메시지 비중 51.5%(5,224/10,144), permissionMode bypassPermissions 99%(492/495), 에이전트 8종·Agent 호출 67회. 다만 위임·자율 마커는 1.9/100 으로 낮아 구조로 위임하고 말로는 지시한다",
+      "verification": "검증요구 마커 8.5/100 으로 1위. verifier 서브에이전트 19회(1위)·code-reviewer 10회, 스킬 code-review 12·verifier 8, /code-review 5회, 커스텀 커맨드 verifier.md 직접 제작",
+      "planning": "plan 계열 스킬 0건, plan mode 흔적 없음. 프롬프트 중앙값 34자·한 문장 71.6% 로 짧게 던져 바로 실행. architect 에이전트 5회가 유일한 설계 계열 사용",
+      "perfectionism": "불만·교정 마커 2.8/100 로 낮고 짧은 후속 지시 25%로 중간. 강조·단정 1.4·범위한정 0.9 로 지시를 조이지 않는다. 완성도를 재지시가 아니라 검증 위임으로 확보한다",
+      "exploration": "프롬프트 211건 중 91건(43%)이 물음표로 끝나고 설명요구 7.1/100 로 2위. 완곡·탐색 1.9 vs 강조·단정 1.4 로 탐색 우세. 첫 단어 음(10)·아(6)·그럼(8)"
+    },
+    "rhythm": "완전한 근무시간형. 오전 9시(39건)·오후 2시(45건) 두 봉우리, 12시 1건으로 점심을 정확히 비우고 17시 이후 2건·0~6시 0건·주말 0건. 프롬프트 간격 중앙값 6.0분(p90 29.6분)의 숙고형이며, 한 지시당 실행 시간은 중앙값 2.1분에 75%가 5분 이내인 짧은 왕복 리듬이다",
+    "interest": "어휘 지문이 발송(20)·반복발송(14)·타깃(14)·분할(13)·예약발송(10)·배치(10) 도메인 계열과 브랜치(17)·커밋(14)·푸시(12) 형상관리 계열로 갈린다. 도구는 Bash 88.7%·Read 5.7% 로 코드베이스 조회에 쏠려 있고, warp·meteor·photon·comet 네 서비스를 오가며 서비스 간 명세 정합성을 맞추는 일이 주 업무로 보인다",
+    "definition": "이 사람은 짧게 묻고 크게 맡기되, 돌아온 답을 반드시 검증으로 되받아 확인하는 개발자다",
+    "teammate_tips": [
+      "질문에 근거를 붙여 답하면 왕복이 줄어든다. 설명요구 마커 7.1/100(2위)에 물음표 비율 43% — 결론만 주면 왜 그런지가 한 번 더 온다",
+      "말투가 건조한 것은 스타일이지 불만이 아니다. 존댓말 0%·느낌표 0·이모지 0·ㅋㅋ 0건인데 불만·교정 마커는 2.8/100 로 낮고 칭찬·수용은 3.3/100 이다",
+      "결과물을 넘길 때 검증 근거를 같이 붙이면 신뢰가 빨리 선다. 검증요구가 마커 1위이고 verifier 커맨드를 직접 만들어 쓸 정도다"
+    ]
+  },
+  "fun": {
+    "mbti": {
+      "value": "ESTJ",
+      "strength": "약함",
+      "basis": "E: 서브에이전트 비중 51.5%·에이전트 8종·SendMessage 29회 / S: 어휘 Top10 이 전부 구체 명사이고 최장 프롬프트가 8가지 케이스 번호 나열 / T: 칭찬·수용 3.3 vs 사과·완충 0.5, 느낌표·이모지 0건 / J: 주말 0건·12시 1건·17시 이후 2건에 검증요구 8.5로 절차를 반드시 태운다"
+    },
+    "age_band": {
+      "value": "30대 후반",
+      "strength": "약함",
+      "basis": "ㅋㅋ/ㅎㅎ 0건·이모지 0건·말줄임표 0건·존댓말 0%(전부 반말)·야간 0~6시 작업 0건. 감탄사와 이모티콘이 완전히 없고 근무시간 경계가 뚜렷한 조합"
+    },
+    "blood_type": {
+      "value": "A형",
+      "strength": "없음(무작위)",
+      "basis": "데이터 신호가 0 이다. 굳이 붙이자면 검증요구 마커 1위와 점심시간을 1건으로 정확히 비운 규칙성이 A형 스테레오타입과 닿는다는 정도인데, 이건 근거가 아니라 말장난이다"
+    },
+    "nickname": "믿고 맡기되 영수증은 받는 사람 — 권한은 99% 열어두고, 검증은 100% 받아낸다",
+    "pair_programming": "말을 아끼는 대신 화면을 많이 볼 타입이다. 프롬프트 간격 중앙값이 6분인 걸 보면 결과를 던져놓고 바로 넘어가지 않고 직접 읽어 확인한다. 설명은 짧게, 대신 이건 이래서 이렇다는 근거를 먼저 깔아주면 왕복이 확 줄어든다. 오후 2시가 가장 활발하니(45건) 어려운 논의는 그 시간에 잡는 게 좋다"
+  },
+  "expert_index": {
+    "formula_version": 1,
+    "score": 59,
+    "level": "숙련",
+    "emoji": "⚙️",
+    "breakdown": {
+      "volume": 10.7,
+      "automation": 12.8,
+      "delegation": 20.0,
+      "assets": 10.0,
+      "omc": 5.8
+    },
+    "inputs": {
+      "sessions_long": 20,
+      "automation_depth": 25.6,
+      "subagent_msg_ratio": 0.51,
+      "asset_points": 6,
+      "omc_ratio": 0.02,
+      "distinct_commands": 3
+    }
+  },
+  "feedback": {
+    "works_well": [
+      "서비스 간 명세·enum 정합성 대조 — meteor·photon eventButtonProcess 3종 확장 건에서 사람 18턴·도구 267회로 영향 범위를 훑었다. code-review 스킬이 트랜스크립트 977회로 최다 등장",
+      "장애·로그 원인 추적 — comet /collect 반복 로그 건에서 ralph 자율 루프와 4종 에이전트로 원인 규명과 문서 갱신까지 이어졌다 (사람 13턴/도구 379회)",
+      "배치·스케줄 경계 케이스 확인과 수정 — 예약발송 상태 전이를 3개 클래스에 걸쳐 확인하고 실제 수정까지 갔다. 도메인 어휘가 어휘 지문 상위를 차지하는 것과 일치"
+    ],
+    "works_poorly": [
+      "코드 수정 산출 — Edit 16+Write 7 = 23회로 도구 호출의 0.4%에 불과하고 상위 15개 세션 중 9개가 변경 파일 0건이다",
+      "긴 자율 실행 — ralph 4회에 그쳤고 1시간 초과 지시는 204건 중 5건(2.5%)뿐이다. 75%가 5분 이내로 끝나는 짧은 왕복 위주",
+      "사전 계획 수립 — plan 계열 스킬 0건, architect 에이전트 5회가 전부다. 짧게 던져 바로 실행하는 패턴이라 설계 단계 이득이 빠져 있다"
+    ],
+    "blockers": [
+      "세션 방치 — turn_durations 최장 건이 55,716.9초(15.5시간), 다음이 14,665초(4.1시간)다. 세션을 닫지 않아 평균(11.9분)이 중앙값(2.1분)의 5.7배가 됐다",
+      "작업 단위 초기화 의존 — 슬래시 커맨드 36건 중 /clear 가 22건(61%)이다. 컨텍스트를 이어가기보다 자주 끊는다",
+      "도구 도입은 했으나 활용은 초기 — OMC 플러그인 누적 9,937회 로드에 트랜스크립트 1,987회 등장인데 명령 호출은 5건(2.0%)·3종뿐이고 훅 0건·규칙 파일 0건·커스텀 에이전트 0건이다"
+    ],
+    "proposals": [
+      "파트 공용 CLAUDE.md 에 검증 프로토콜을 표준화하자. 이 사람의 전역 CLAUDE.md 가 이미 위임·검증 구조를 담고 있고 서브에이전트 51.5%·검증요구 8.5/100 으로 효과가 확인됐다. verifier 커스텀 커맨드도 함께 공유하면 파트 전체가 같은 기준을 쓸 수 있다",
+      "권한 허용목록을 파트 공용으로 정리하자. 현재 bypassPermissions 99%(492/495)로 승인 단계를 통째로 열어둔 상태인데 이미 92건이 축적돼 있어 공용 목록으로 다듬으면 안전성과 편의를 함께 얻는다",
+      "계획 단계 도구(plan 계열)와 자율 루프 온보딩을 짧게 하자. 검증(뒷단)은 최상위인데 계획(앞단)이 0건이다. ralph·team 을 이미 한 번씩 써봤으므로 진입 장벽은 낮고, 자동화 심도 25.6배가 더 올라갈 여지가 크다"
+    ]
+  },
+  "script_commit": "c810bda"
+}
