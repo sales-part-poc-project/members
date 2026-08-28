@@ -436,7 +436,7 @@ class TestPersonPage(unittest.TestCase):
         self.assertIn("가상 프롬프트", html)                      # 재현 프롬프트 배지
         self.assertIn("실제 발화 아님", html)
         self.assertIn("사외 공유 금지", html)
-        self.assertIn(f'href="{src.stem}.md"', html)             # .md 상대 링크
+        self.assertNotIn(f'href="{src.stem}.md"', html)          # .md 로 링크하지 않는다
         self.assertTrue(html.startswith("<!doctype html>"))
         self.assertIn("<svg", html)                               # 인라인 SVG 차트
         self.assertNotIn("<script", html)                         # 인라인 JS 없음
@@ -503,14 +503,17 @@ class TestPersonPage(unittest.TestCase):
         self.assertLess(d["coverage"]["speech_sample_size"], 100)
         self.assertIn("해석 주의", B.render_person(d))
 
-    def test_repo_url_makes_github_md_link(self):
+    def test_person_page_has_no_md_link(self):
+        # .md 가 옆에 있어도 개인 페이지는 .md 로 링크하지 않는다 (대시보드에서 .md 노출 안 함)
         src = FIXTURES / "샘플파트_샘플-가_20260828.json"
         dst = self.tmp / src.name
         shutil.copyfile(src, dst)
-        rc, _ = run_cli(["--person", str(dst), "--repo-url", "https://github.com/o/r"])
+        (self.tmp / f"{src.stem}.md").write_text("# 보고서\n", encoding="utf-8")
+        rc, _ = run_cli(["--person", str(dst)])
         self.assertEqual(rc, 0)
         html = (self.tmp / f"{src.stem}.html").read_text(encoding="utf-8")
-        self.assertIn(f"https://github.com/o/r/blob/main/data/{src.stem}.md", html)
+        self.assertNotIn(f"{src.stem}.md", html)
+        self.assertNotIn("보고서 원문", html)
 
 
 class TestSiteBuild(unittest.TestCase):
@@ -589,26 +592,27 @@ class TestSiteBuild(unittest.TestCase):
         self.assertIn("샘플-가", html)
         self.assertEqual(len(list((self.out / "data").glob("*.html"))), len(valid_fixtures()))
 
-    def test_md_is_copied_and_linked(self):
+    def test_md_is_not_copied_or_linked(self):
+        # .md 는 대시보드로 나가지 않는다 — 복사도, 링크도 하지 않는다
         data = self.tmp / "data"
         data.mkdir()
         src = FIXTURES / "샘플파트_샘플-가_20260828.json"
         shutil.copyfile(src, data / src.name)
         (data / f"{src.stem}.md").write_text("# 보고서\n", encoding="utf-8")
-        run_cli(["--out", str(self.out), "--data", str(data)])
-        self.assertTrue((self.out / "data" / f"{src.stem}.md").exists())
+        rc, _ = run_cli(["--out", str(self.out), "--data", str(data)])
+        self.assertEqual(rc, 0)
+        self.assertFalse((self.out / "data" / f"{src.stem}.md").exists())
+        self.assertEqual(list((self.out / "data").glob("*.md")), [])
         html = (self.out / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f'href="data/{src.stem}.md"', html)
+        self.assertNotIn(f"{src.stem}.md", html)
+        self.assertNotIn(".md 원문", html)
+        person = (self.out / "data" / f"{src.stem}.html").read_text(encoding="utf-8")
+        self.assertNotIn(f"{src.stem}.md", person)
 
-    def test_repo_url_rewrites_md_links(self):
-        data = self.tmp / "data"
-        data.mkdir()
-        src = FIXTURES / "샘플파트_샘플-가_20260828.json"
-        shutil.copyfile(src, data / src.name)
-        run_cli(["--out", str(self.out), "--data", str(data),
-                 "--repo-url", "https://github.com/owner/repo/"])
-        html = (self.out / "index.html").read_text(encoding="utf-8")
-        self.assertIn(f"https://github.com/owner/repo/blob/main/data/{src.stem}.md", html)
+    def test_repo_url_option_is_gone(self):
+        # --repo-url 은 .md 링크 전용 옵션이었으므로 제거됐다 — argparse 가 거부(SystemExit)해야 한다
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            run_cli(["--out", str(self.out), "--demo", "--repo-url", "https://github.com/o/r"])
 
     def test_latest_report_is_representative(self):
         data = self.tmp / "data"

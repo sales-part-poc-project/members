@@ -35,7 +35,7 @@ jobs:
 
       # 잘못된 JSON 은 build_site.py 가 건너뛰고 이유만 출력한다 (한 사람 때문에 전체가 막히지 않는다)
       - name: 대시보드 빌드
-        run: python3 scripts/build_site.py --out _site --repo-url "https://github.com/${{ github.repository }}"
+        run: python3 scripts/build_site.py --out _site
 
       - uses: actions/configure-pages@main
         with:

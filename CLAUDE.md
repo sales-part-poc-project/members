@@ -195,7 +195,9 @@ ls ~/.claude/projects/<프로젝트폴더>/<sessionId>.jsonl
 
 **URL**: <https://sales-part-poc-project.github.io/members/>
 
-대시보드는 `data/**/*.json` 만 읽는다 (`.md` 는 파싱하지 않는다).
+대시보드는 **`data/` 바로 아래의 `.json` 만** 읽는다 (`.md` 는 파싱하지 않고, **하위 폴더도 뒤지지 않는다**
+— `build_site.py` 는 `data_dir.glob("*.json")` 으로 평면 조회한다. 산출물을 `data/{파트}/` 같은 하위 폴더에 두면
+`pages.yml` 의 `paths: data/**` 때문에 빌드는 돌지만 **그 사람만 대시보드에서 조용히 빠진다**).
 같은 사람이 여러 번 뽑았으면 **(파트, 이름) 별 최신 날짜 1건**을 대표로 쓰고 나머지는 이력으로 표시한다.
 
 **로컬 미리보기** (push 없이 확인)

@@ -9,7 +9,7 @@
         --part 영업1파트 --name 홍길동 --date 2026-08-28 [--role "..."] [--highlight "..."] [--force]
     python3 scripts/build_site.py --check  data/영업1파트_홍길동_20260828.json
     python3 scripts/build_site.py --person data/영업1파트_홍길동_20260828.json
-    python3 scripts/build_site.py --out _site [--data data] [--repo-url https://github.com/owner/repo]
+    python3 scripts/build_site.py --out _site [--data data]
     python3 scripts/build_site.py --out _site --demo
 
 정본 스키마: docs/SUMMARY_SCHEMA.md
@@ -23,7 +23,6 @@ import json
 import math
 import platform
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -1332,7 +1331,7 @@ def expert_index_card(ei: dict) -> str:
                 f'<div class="note">입력값 — {esc(inp) if inp else "기록 없음"}</div>')
 
 
-def render_person(data: dict, *, md_href: str = "") -> str:
+def render_person(data: dict) -> str:
     name = str(data.get("name") or "")
     part = str(data.get("part") or "")
     date = str(data.get("date") or "")
@@ -1648,7 +1647,6 @@ def render_person(data: dict, *, md_href: str = "") -> str:
     envtxt = " · ".join(filter(None, [
         f'Claude Code {env.get("claude_code")}' if env.get("claude_code") else "",
         str(env.get("os") or ""), f'Python {env.get("python")}' if env.get("python") else ""]))
-    md_link = (f' · <a href="{esc(md_href)}">보고서 원문(.md)</a>' if md_href else "")
     foot = (f'<footer class="foot"><div class="scrollx"><table class="tbl" style="min-width:0">'
             f'<thead><tr><th>집계 구간</th><th>기간</th><th>원본</th></tr></thead>'
             f'<tbody>{"".join(cov_rows)}</tbody></table></div>'
@@ -1657,7 +1655,7 @@ def render_person(data: dict, *, md_href: str = "") -> str:
             + (f' · {esc(envtxt)}' if envtxt else "")
             + (f' · 집계 스크립트 <code>{esc(data.get("script_commit"))}</code>'
                if str(data.get("script_commit") or "").strip() else "")
-            + md_link + '</p>'
+            + '</p>'
             + '<p class="notice">사외 공유 금지 — 파트 내부 회람용입니다</p></footer>')
 
     body = (hero + '<div class="wrap">' + kpis
@@ -1702,7 +1700,7 @@ def compare_card(title, members, getter, *, fmt=fmt_int, suffix="", color=ACCENT
     return card(title, bar_list(items, color=color, fmt=fmt, suffix=suffix))
 
 
-def render_index(members, history, notes, *, repo_url="") -> str:
+def render_index(members, history, notes) -> str:
     built = datetime.datetime.now(KST).strftime("%Y-%m-%d %H:%M KST")
 
     if not members:
@@ -1764,8 +1762,6 @@ def render_index(members, history, notes, *, repo_url="") -> str:
         if ei:
             badges.append(f'{level_badge(ei)}<span class="badge" style="margin-left:5px">'
                           f'{esc(fmt_int(g(ei, "score")))}점</span>')
-        md_btn = (f'<a class="btn btn-s" href="{esc(m["md_href"])}">.md 원문</a>'
-                  if m.get("md_href") else "")
         mcards.append(
             f'<div class="mcard"><div class="mtop"><h3>{esc(d.get("name"))}</h3>'
             f'<span class="mpart">{esc(d.get("part"))} · {esc(d.get("date"))}</span></div>'
@@ -1782,7 +1778,7 @@ def render_index(members, history, notes, *, repo_url="") -> str:
                          ("체언종결", num(pol.get("noun")), SERIES[2])])
             + (f'<div class="pills">{"".join(badges)}</div>' if badges else "")
             + f'<div class="mlinks"><a class="btn btn-p" href="{esc(m["page_href"])}">개인 페이지</a>'
-              f'{md_btn}</div></div>')
+              f'</div></div>')
     s1 = f'<div class="members">{"".join(mcards)}</div>'
 
     # ── 02 비교 차트 ──
@@ -2048,11 +2044,6 @@ def cmd_check(args) -> int:
     return 0
 
 
-def md_sibling(json_path: Path):
-    md = json_path.with_suffix(".md")
-    return md if md.exists() else None
-
-
 def cmd_person(args) -> int:
     path = Path(args.person)
     data, err = load_json(path)
@@ -2065,13 +2056,8 @@ def cmd_person(args) -> int:
         print_issues(errors, warnings)
         return 1
     print_issues([], warnings)
-    md_href = ""
-    if args.repo_url:
-        md_href = f"{args.repo_url.rstrip('/')}/blob/main/data/{path.stem}.md"
-    elif md_sibling(path):
-        md_href = f"{path.stem}.md"
     out = path.with_suffix(".html")
-    out.write_text(render_person(data, md_href=md_href), encoding="utf-8")
+    out.write_text(render_person(data), encoding="utf-8")
     print(f"만들었습니다 -> {out}  ({out.stat().st_size:,} bytes)")
     return 0
 
@@ -2087,7 +2073,6 @@ def cmd_site(args) -> int:
         return 1
     print(f"데이터: {data_dir}" + (" (데모)" if args.demo else ""))
 
-    repo = (args.repo_url or "").rstrip("/")
     entries, notes = [], []
     for jp in sorted(data_dir.glob("*.json")):
         data, err = load_json(jp)
@@ -2106,17 +2091,9 @@ def cmd_site(args) -> int:
             print(f"{jp.name}: 경고 {len(warnings)}개")
             print_issues([], warnings, prefix="  ")
         stem = jp.stem
-        md_href = f"{repo}/blob/main/data/{stem}.md" if repo else f"data/{stem}.md"
-        person_md_href = f"{repo}/blob/main/data/{stem}.md" if repo else f"{stem}.md"
-        md = md_sibling(jp)
-        if md:
-            shutil.copyfile(md, out_data / md.name)
-        elif not repo:
-            md_href = person_md_href = ""
-        (out_data / f"{stem}.html").write_text(
-            render_person(data, md_href=person_md_href), encoding="utf-8")
+        (out_data / f"{stem}.html").write_text(render_person(data), encoding="utf-8")
         entries.append({"data": data, "stem": stem, "date": str(data.get("date") or ""),
-                        "page_href": f"data/{stem}.html", "md_href": md_href})
+                        "page_href": f"data/{stem}.html"})
 
     # (파트, 이름) 별 최신 1건이 대표, 나머지는 이력
     grouped = {}
@@ -2130,7 +2107,7 @@ def cmd_site(args) -> int:
     members.sort(key=lambda m: (str(m["data"].get("part")), str(m["data"].get("name"))))
 
     index = out_dir / "index.html"
-    index.write_text(render_index(members, history, notes, repo_url=repo), encoding="utf-8")
+    index.write_text(render_index(members, history, notes), encoding="utf-8")
     print(f"만들었습니다 -> {index}  (멤버 {len(members)}명 · 페이지 {len(entries)}개"
           + (f" · 건너뜀 {len(notes)}개" if notes else "") + ")")
     return 0
@@ -2154,8 +2131,6 @@ def main(argv=None) -> int:
     p.add_argument("--person", metavar="요약JSON", help="개인 페이지 .html 을 같은 위치에 렌더한다")
     p.add_argument("--out", metavar="디렉터리", help="통합 대시보드를 빌드할 위치 (예: _site)")
     p.add_argument("--data", metavar="디렉터리", help="요약 JSON 이 모인 디렉터리 (기본: data)")
-    p.add_argument("--repo-url", dest="repo_url", default="",
-                   help="예: https://github.com/owner/repo — .md 링크를 GitHub 로 건다")
     p.add_argument("--demo", action="store_true", help="scripts/fixtures 를 데이터로 데모 빌드")
     p.add_argument("--part", help="파트 이름 (언더스코어·공백 금지)")
     p.add_argument("--name", help="이름 (언더스코어·공백 금지)")

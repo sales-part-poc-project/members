@@ -263,7 +263,7 @@ python3 scripts/build_site.py --check data/영업1파트_홍길동_20260828.json
 python3 scripts/build_site.py --person data/영업1파트_홍길동_20260828.json
 
 # ④ 통합 대시보드 빌드 (GitHub Actions 가 하는 일)
-python3 scripts/build_site.py --out _site --repo-url https://github.com/owner/repo
+python3 scripts/build_site.py --out _site
 
 # ⑤ 가짜 데이터로 미리보기
 python3 scripts/build_site.py --out _site --demo
@@ -272,7 +272,7 @@ python3 scripts/build_site.py --out _site --demo
 - `--scaffold` 는 파일이 이미 있으면 **덮어쓰지 않고 exit 1** 한다. 다시 뽑으려면 `--force`.
 - 파트·이름에 `_` 나 공백이 있으면 `--scaffold` 가 거부한다 (파일명 구분자가 깨진다).
 - `--out` 은 검증에 걸린 파일만 **건너뛰고 exit 0** 한다. 한 사람이 틀려도 나머지 페이지는 나온다.
-- `--repo-url` 을 주면 `.md` 링크가 `{repo-url}/blob/main/data/{stem}.md` 로, 없으면 상대경로로 걸린다.
+- 대시보드와 개인 페이지는 `.md` 로 **링크하지 않고, `_site/` 로 복사하지도 않는다.** `.md` 는 저장소에서만 읽는다 (Pages 노출 범위를 `.json` · `.html` 로 한정).
 
 ### `--scaffold` 가 자동으로 채우는 것
 
