@@ -362,6 +362,13 @@ class TestScaffold(unittest.TestCase):
                                "top_models": [["claude-opus-5", 30]],
                                "first": "2026-08-01T00:00:00Z", "last": "2026-08-28T00:00:00Z"}],
                  "tools_all": [["Bash", 700], ["Read", 500]],
+                 "turn_durations": {"n": 3, "median_sec": 120.0, "p25_sec": 60.0, "p75_sec": 300.0,
+                                    "p90_sec": 600.0, "max_sec": 900.0, "mean_sec": 250.0,
+                                    "total_sec": 750.0,
+                                    "buckets": [["1분 이하", 1], ["1~5분", 1], ["5~15분", 1],
+                                                ["15~60분", 0], ["1시간 초과", 0]],
+                                    "longest": [{"sessionId": "x", "project": "-Users-x-dev-order",
+                                                 "start": "2026-08-01T00:00", "duration_sec": 900.0}]},
                  "models_all": [["claude-opus-5", 80], ["claude-sonnet-5", 20]],
                  "effort": [["high", 10]], "permissionMode": [["auto", 5]],
                  "mcp_servers_called": [["context7", 3]], "subagent_types": [["Explore", 2]],
@@ -373,6 +380,11 @@ class TestScaffold(unittest.TestCase):
         self.assertEqual(doc["scale"]["natural_prompts"], 80)
         self.assertEqual(doc["scale"]["slash_prompts"], 5)
         self.assertEqual(doc["workflow"]["automation_depth"], 12.0)
+        td = doc["workflow"]["turn_duration"]
+        self.assertEqual(td["median_sec"], 120.0)
+        self.assertEqual(td["n"], 3)
+        self.assertEqual(td["buckets"][1], ["1~5분", 1])
+        self.assertNotIn("longest", td, "세션·프로젝트가 든 longest 는 요약 JSON 으로 옮기지 않는다")
         self.assertEqual(doc["projects_top"][0]["project"], "order")
         self.assertEqual(doc["projects_top"][0]["tool_calls"], 150)  # 상위 도구 합계 근사
         self.assertEqual(len(doc["scale"]["by_hour"]), 24)
@@ -498,6 +510,34 @@ class TestPersonPage(unittest.TestCase):
         self.assertIsNone(d["fun"])
         self.assertNotIn('<span class="sectitle">재미 코너</span>', B.render_person(d))
 
+    def test_turn_duration_card_rendered(self):
+        d = load(FIXTURES / "샘플파트_샘플-가_20260828.json")
+        html = B.render_person(d)
+        self.assertIn("한 지시당 실행 시간 (최근 30일)", html)
+        self.assertIn("한 지시당 실행 시간 (중앙값)", html)       # KPI 타일
+        self.assertIn("4분 24초", html)                            # median_sec 264
+        self.assertIn("1~5분", html)                               # 구간 분포
+        self.assertNotIn("도구 Top 10", html)
+
+    def test_turn_duration_null_is_warning_and_placeholder(self):
+        src = FIXTURES / "샘플파트_샘플-나_20260828.json"
+        d = load(src)
+        self.assertIsNone(d["workflow"]["turn_duration"])
+        errors, warnings = B.validate(d, src)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("turn_duration" in w for w in warnings))
+        html = B.render_person(d)
+        self.assertIn("한 지시당 실행 시간 (최근 30일)", html)
+        self.assertIn("데이터 없음", html)
+
+    def test_turn_duration_missing_key_is_warning(self):
+        src = FIXTURES / "샘플파트_샘플-가_20260828.json"
+        d = load(src)
+        del d["workflow"]["turn_duration"]
+        errors, warnings = B.validate(d, src)
+        self.assertEqual(errors, [])
+        self.assertTrue(any("turn_duration" in w for w in warnings))
+
     def test_small_sample_shows_warning_badge(self):
         d = load(FIXTURES / "샘플2파트_샘플-다_20260827.json")
         self.assertLess(d["coverage"]["speech_sample_size"], 100)
@@ -614,6 +654,18 @@ class TestSiteBuild(unittest.TestCase):
         with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             run_cli(["--out", str(self.out), "--demo", "--repo-url", "https://github.com/o/r"])
 
+    def test_dashboard_has_per_person_charts_and_no_tools_top(self):
+        rc, _ = run_cli(["--out", str(self.out), "--demo"])
+        self.assertEqual(rc, 0)
+        html = (self.out / "index.html").read_text(encoding="utf-8")
+        self.assertIn("개인별 그래프", html)
+        self.assertIn("한 지시당 실행 시간 분포 (최근 30일)", html)
+        self.assertIn("한 지시당 실행 시간 중앙값 (최근 30일)", html)   # 비교 막대
+        self.assertIn("화법 마커 Top 5 (100건당)", html)
+        self.assertNotIn("도구 Top 10", html)
+        # 멤버 수만큼 개인별 카드가 있어야 한다 (샘플-가 · 샘플-나 · 샘플-다)
+        self.assertEqual(html.count('class="card pcard"'), 3)
+
     def test_latest_report_is_representative(self):
         data = self.tmp / "data"
         data.mkdir()
@@ -625,6 +677,14 @@ class TestSiteBuild(unittest.TestCase):
 
 
 class TestFormatting(unittest.TestCase):
+    def test_fmt_dur(self):
+        self.assertEqual(B.fmt_dur(45), "45초")
+        self.assertEqual(B.fmt_dur(292), "4분 52초")
+        self.assertEqual(B.fmt_dur(300), "5분")
+        self.assertEqual(B.fmt_dur(4320), "1시간 12분")
+        self.assertEqual(B.fmt_dur(65503.9), "18.2시간")
+        self.assertEqual(B.fmt_dur(None), "0초")
+
     def test_fmt_tok(self):
         self.assertEqual(B.fmt_tok(0), "0")
         self.assertEqual(B.fmt_tok(830_000), "830K")

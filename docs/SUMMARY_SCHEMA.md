@@ -97,7 +97,12 @@ data/{파트}_{이름}_{YYYYMMDD}.html   ← 개인 시각화 (build_site.py 가
   // ── 4장 워크플로 ──
   "workflow": {
     "automation_depth": 11.4,                          // tool_calls / human_turns (소수 1자리)
-    "tools_top": [["Bash", 6100], ["Read", 4200]],     // Top 10
+    "turn_duration": {                                 // 한 지시당 실행 시간 (최근 30일) — turn_durations 블록. 없으면 null
+      "n": 181, "median_sec": 291.8, "p25_sec": 152.1, "p75_sec": 597.6, "p90_sec": 1472.6,
+      "max_sec": 65503.9, "mean_sec": 907.9, "total_sec": 164321.6,
+      "buckets": [["1분 이하", 16], ["1~5분", 76], ["5~15분", 63], ["15~60분", 22], ["1시간 초과", 4]]
+    },
+    "tools_top": [["Bash", 6100], ["Read", 4200]],     // Top 10 — 수집만 하고 개인 페이지·대시보드에는 그리지 않는다
     "omc": {                                           // OMC(oh-my-claudecode) 명령어 사용 — cc_usage_stats.json 의 omc 블록
       "commands": [["autopilot", 240], ["ultrawork", 118], ["ralph", 64]],  // 정규화 이름, 슬래시+키워드 합산, 전부
       "distinct_commands": 9,
@@ -235,6 +240,7 @@ data/{파트}_{이름}_{YYYYMMDD}.html   ← 개인 시각화 (build_site.py 가
 - `scale.by_hour` 길이 24, `profile.axes` 5개 키 모두 1~5 정수
 - `speech.markers_per_100` 에 10종 마커 전부 존재
 - `workflow.omc` 에 `commands` `omc_ratio` `prompts_with_omc` `prompts_total` 존재
+- `workflow.turn_duration` 은 `null` 이거나 (`n` · `*_sec` 숫자 + `buckets`) 객체 — 키가 없으면 **경고만**
 - `expert_index.score` 가 0~100 정수이고 `breakdown` 에 5축 키 전부 존재
 
 로컬에서 미리 확인:
@@ -287,6 +293,7 @@ python3 scripts/build_site.py --out _site --demo
 | `scale.subagent_msgs_30d` · `tok_out_30d` · `thinking_tok_30d` · `tok_cache_read_30d` | `totals.*` |
 | `projects_top` | `projects` 를 `human_turns` 내림차순으로 상위 10개 |
 | `workflow.automation_depth` | `totals.tool_calls / totals.human_turns` (소수 1자리) |
+| `workflow.turn_duration` | `turn_durations` 블록 (`n` · 분위 · 합계 · `buckets`). `longest` 는 옮기지 않는다. 블록이 없으면 `null` |
 | `workflow.subagent_msg_ratio` | `totals.subagent_msgs / (assistant_msgs + subagent_msgs)` |
 | `workflow.tools_top` · `subagent_types` · `mcp_servers` | `tools_all` · `subagent_types` · `mcp_servers_called` 상위 10 |
 | `workflow.omc` | `omc` 블록 그대로 (`commands` 전부, 비율은 소수 3자리) |
@@ -346,6 +353,8 @@ python3 scripts/build_site.py --out _site --demo
   `keyword_ratio` 를 칩으로, `commands` 는 **전부** 가로막대로, `keyword_forms` 는 칩으로,
   `by_month` 는 도입 추이 소형 막대로 그린다 (`slash_forms` 는 스키마에 없어 쓰지 않는다)
 - `expert_index` 는 **재미 코너 앞의 독립 절**로 그린다. `fun` 이 `null` 이어도 이 절은 남는다
+- `workflow.turn_duration` 은 KPI 타일(중앙값)과 3장 카드(중앙값 큰 숫자 · p25/p75/p90/최장/평균 칩 · 구간 분포 막대)로
+  그린다. `null` 이면 "데이터 없음". `workflow.tools_top` 은 **그리지 않는다**
 
 ### 대시보드가 JSON 을 어떻게 쓰는지
 
@@ -353,8 +362,10 @@ python3 scripts/build_site.py --out _site --demo
 - `expert_index` 로 **"AI 사용 전문가 지수 순위"** 절을 그린다 — 점수 내림차순 가로막대,
   레벨 배지, `breakdown` 5축 미니 스택 바. **재미용** 고지를 항상 함께 단다
 - 비교 가로막대: 세션 수 · 도구 호출 · 직접 프롬프트 · 자동화 심도 · 프롬프트 길이 중앙값 ·
-  짧은 후속 지시 비율 · **OMC 명령 사용 비중** · 서브에이전트 메시지 비중
-- 파트 합산: 도구 Top 10 · **OMC 명령 Top 10** · 모델 비중. `bash_*` 는 어디에도 쓰지 않는다
+  짧은 후속 지시 비율 · **OMC 명령 사용 비중** · 서브에이전트 메시지 비중 · **한 지시당 실행 시간 중앙값**
+- **개인별 그래프** 절: 멤버마다 같은 6개 미니 차트(월별 세션 · 시간대 · OMC 명령 Top 5 · 실행 시간 분포 ·
+  성향 5축 레이더 · 화법 마커 Top 5)를 나란히 그린다 — 파트 합산이 아니라 사람별로 보는 용도
+- 파트 합산: **OMC 명령 Top 10** · 모델 비중 (도구 Top 10 은 그리지 않는다). `bash_*` 는 어디에도 쓰지 않는다
 
 ### 테스트와 미리보기 데이터
 

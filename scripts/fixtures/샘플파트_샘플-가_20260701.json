@@ -176,6 +176,38 @@
   "projects_other_count": 6,
   "workflow": {
     "automation_depth": 8.4,
+    "turn_duration": {
+      "n": 88,
+      "median_sec": 180.0,
+      "p25_sec": 70.0,
+      "p75_sec": 400.0,
+      "p90_sec": 900.0,
+      "max_sec": 2400.0,
+      "mean_sec": 300.0,
+      "total_sec": 26400.0,
+      "buckets": [
+        [
+          "1분 이하",
+          20
+        ],
+        [
+          "1~5분",
+          40
+        ],
+        [
+          "5~15분",
+          20
+        ],
+        [
+          "15~60분",
+          8
+        ],
+        [
+          "1시간 초과",
+          0
+        ]
+      ]
+    },
     "tools_top": [
       [
         "Bash",

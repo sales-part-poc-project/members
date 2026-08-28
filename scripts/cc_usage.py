@@ -71,7 +71,7 @@ def newP():
 def newS():
     return {"proj": None, "f": None, "l": None, "human": 0, "slash": 0, "agent": 0, "prompt": None,
             "tools": C(), "files": C(), "skills": C(), "models": C(), "subs": C(), "to": 0,
-            "branches": set()}
+            "branches": set(), "ev": []}   # ev: (timestamp, "h"|"a") — 한 지시당 실행 시간 계산용
 
 
 P, S = collections.defaultdict(newP), collections.defaultdict(newS)
@@ -138,8 +138,12 @@ for f in files:
                         s[k] += 1
                         if k == "human" and s["prompt"] is None:
                             s["prompt"] = " ".join(txt.split())[:400]
+                        if k == "human" and ts:
+                            s["ev"].append((ts, "h"))
             elif t == "assistant":
                 p["sub" if side else "asst"] += 1
+                if s is not None and ts and not side:
+                    s["ev"].append((ts, "a"))
                 mod = m.get("model")
                 if mod:
                     p["models"][mod] += 1; models[mod] += 1
@@ -207,6 +211,60 @@ sess = [{"sessionId": k, "project": v["proj"], "start": (v["f"] or "")[:16], "en
         for k, v in S.items() if v["human"]]
 sess.sort(key=lambda r: -(r["human_turns"] * 3 + r["tool_calls"] / 10))
 O["top_sessions"], O["sessions_with_human_turns"] = sess[:15], len(sess)
+
+
+# ── 2-1. 한 지시당 실행 시간 (사람 턴 → 다음 사람 턴 전 마지막 메인 어시스턴트 메시지) ──
+def _epoch(ts):
+    try:
+        return datetime.datetime.fromisoformat(str(ts).replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return None
+
+
+def _pct(sorted_vals, q):
+    if not sorted_vals:
+        return 0
+    return sorted_vals[min(len(sorted_vals) - 1, max(0, round(q * (len(sorted_vals) - 1))))]
+
+
+DUR_BUCKETS = (("1분 이하", 60), ("1~5분", 300), ("5~15분", 900), ("15~60분", 3600), ("1시간 초과", None))
+durs = []                                   # (초, sessionId, project, 시작 ts)
+for sid, v in S.items():
+    ev = sorted((e, k, ts) for ts, k in v["ev"] if (e := _epoch(ts)) is not None)
+    i = 0
+    while i < len(ev):
+        t0, k, ts0 = ev[i]
+        if k != "h":
+            i += 1
+            continue
+        last_a, j = None, i + 1
+        while j < len(ev) and ev[j][1] != "h":       # 다음 사람 턴 전까지
+            if ev[j][1] == "a":
+                last_a = ev[j][0]
+            j += 1
+        if last_a is not None and last_a >= t0:
+            durs.append((last_a - t0, sid, v["proj"], ts0))
+        i = j
+dvals = sorted(d for d, *_ in durs)
+bucket = C()
+for d in dvals:
+    for label, hi in DUR_BUCKETS:
+        if hi is None or d <= hi:
+            bucket[label] += 1
+            break
+O["turn_durations"] = {
+    "n": len(dvals),                                        # 측정한 지시 수 (트랜스크립트 구간)
+    "median_sec": round(_pct(dvals, 0.5), 1),
+    "p25_sec": round(_pct(dvals, 0.25), 1),
+    "p75_sec": round(_pct(dvals, 0.75), 1),
+    "p90_sec": round(_pct(dvals, 0.9), 1),
+    "max_sec": round(dvals[-1], 1) if dvals else 0,
+    "mean_sec": round(sum(dvals) / len(dvals), 1) if dvals else 0,
+    "total_sec": round(sum(dvals), 1),                      # 지시들이 돌아간 시간 합계
+    "buckets": [[label, bucket.get(label, 0)] for label, _ in DUR_BUCKETS],
+    "longest": [{"sessionId": sid, "project": proj, "start": (ts or "")[:16], "duration_sec": round(d, 1)}
+                for d, sid, proj, ts in sorted(durs, key=lambda x: -x[0])[:5]],
+}
 
 # ── 3. 장기 세션 통계 (.session-stats.json — 트랜스크립트 정리 후에도 남음) ──
 ss = (jload(CC / ".session-stats.json", {}) or {}).get("sessions") or {}
@@ -509,3 +567,5 @@ print(json.dumps(O["totals"], ensure_ascii=False))
 print(json.dumps(O["session_stats_longwindow"], ensure_ascii=False)[:400])
 print("speech sample:", O["speech"]["sample_size"], "| 존대/반말:", O["speech"]["politeness"])
 print("omc:", O["omc"]["prompts_with_omc"], "/", O["omc"]["prompts_total"], "=", O["omc"]["omc_ratio"], "|", O["omc"]["commands"][:5])
+td = O["turn_durations"]
+print("turn_durations:", td["n"], "건 | 중앙값", td["median_sec"], "s | p90", td["p90_sec"], "s | 최장", td["max_sec"], "s | 합계", td["total_sec"], "s")

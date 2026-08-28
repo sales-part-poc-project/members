@@ -169,6 +169,7 @@
   "projects_other_count": 2,
   "workflow": {
     "automation_depth": 6.8,
+    "turn_duration": null,
     "tools_top": [
       [
         "Read",

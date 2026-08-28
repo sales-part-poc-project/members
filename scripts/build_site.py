@@ -122,6 +122,20 @@ def fmt_pct(v, digits=0) -> str:
     return f"{num(v) * 100:.{digits}f}%"
 
 
+def fmt_dur(sec) -> str:
+    """초 → 사람이 읽는 시간. 45초 · 4분 52초 · 1시간 12분 · 18.2시간"""
+    s = max(0.0, num(sec))
+    if s < 60:
+        return f"{int(round(s))}초"
+    if s < 3600:
+        m, r = divmod(int(round(s)), 60)
+        return f"{m}분 {r:02d}초" if r else f"{m}분"
+    if s < 36000:
+        h, r = divmod(int(round(s)), 3600)
+        return f"{h}시간 {r // 60}분" if r // 60 else f"{h}시간"
+    return f"{s / 3600:.1f}시간"
+
+
 def fmt_dec(v, digits=1) -> str:
     return f"{num(v):.{digits}f}"
 
@@ -360,6 +374,16 @@ def validate(data, json_path: Path):
         _need_pairs(data, f"workflow.{k}", E)
     if not isinstance(g(data, "workflow.subagent_msg_ratio"), (int, float)):
         E("workflow.subagent_msg_ratio: 숫자여야 합니다 (0~1)")
+    td = g(data, "workflow.turn_duration")
+    if td is None:
+        W("workflow.turn_duration: 없습니다 — 한 지시당 실행 시간. 집계 스크립트를 다시 돌려 스캐폴드하면 채워집니다")
+    elif not isinstance(td, dict):
+        E("workflow.turn_duration: 객체이거나 null 이어야 합니다")
+    else:
+        for k in ("n", "median_sec", "p25_sec", "p75_sec", "p90_sec", "max_sec", "mean_sec", "total_sec"):
+            if not isinstance(td.get(k), (int, float)):
+                E(f"workflow.turn_duration.{k}: 숫자여야 합니다 (현재 {td.get(k)!r})")
+        _need_pairs(data, "workflow.turn_duration.buckets", E)
     omc = g(data, "workflow.omc")
     if not isinstance(omc, dict):
         E("workflow.omc: 객체여야 합니다 (cc_usage_stats.json 의 omc 블록)")
@@ -645,6 +669,23 @@ def normalize_shares(counter_pairs, limit=None, digits=2):
     return out
 
 
+def turn_duration_block(td):
+    """cc_usage_stats.json 의 turn_durations → 요약 JSON workflow.turn_duration. 블록이 없으면 None."""
+    if not isinstance(td, dict) or not td:
+        return None
+    return {
+        "n": int(num(td.get("n"))),
+        "median_sec": round(num(td.get("median_sec")), 1),
+        "p25_sec": round(num(td.get("p25_sec")), 1),
+        "p75_sec": round(num(td.get("p75_sec")), 1),
+        "p90_sec": round(num(td.get("p90_sec")), 1),
+        "max_sec": round(num(td.get("max_sec")), 1),
+        "mean_sec": round(num(td.get("mean_sec")), 1),
+        "total_sec": round(num(td.get("total_sec")), 1),
+        "buckets": [[str(k), int(num(v))] for k, v in pair_list(td.get("buckets"))],
+    }
+
+
 def normalize_dow(pairs):
     d = {str(k): num(v) for k, v in pair_list(pairs)}
     return [[k, int(d.get(k, 0))] for k in DOW_ORDER]
@@ -780,6 +821,7 @@ def build_scaffold(stats: dict, *, part: str, name: str, date: str,
         "projects_other_count": max(0, len(rows) - len(projects_top)),
         "workflow": {
             "automation_depth": automation,
+            "turn_duration": turn_duration_block(stats.get("turn_durations")),
             "tools_top": [[k, int(v)] for k, v in pair_list(stats.get("tools_all"), 10)],
             "omc": omc_block,
             "subagent_types": [[k, int(v)] for k, v in pair_list(stats.get("subagent_types"), 10)],
@@ -881,7 +923,7 @@ li{margin:0 0 6px}
 .hero-score .fy{font-size:11px;color:#8E8271}
 
 /* KPI */
-.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:30px 0 36px}
+.kpis{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin:30px 0 36px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 14px}
 .kpi-k{font-size:12px;color:var(--muted);margin-bottom:5px}
 .kpi-v{font-size:clamp(21px,3vw,29px);font-weight:800;letter-spacing:-.045em;line-height:1.12;
@@ -1021,6 +1063,14 @@ li{margin:0 0 6px}
 .heat th.rowh{text-align:left;padding-right:10px;color:var(--ink2);font-size:12px}
 .heat td{text-align:center;padding:6px 4px;border-radius:4px;font-variant-numeric:tabular-nums;min-width:32px}
 
+/* 개인별 그래프 */
+.pcard+.pcard{margin-top:14px}
+.ptop{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.ptop h3{font-size:19px;font-weight:800;letter-spacing:-.03em}
+.pcharts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
+.pchart{min-width:0}
+.pchart .cardtitle{margin-bottom:8px}
+
 /* 멤버 카드 */
 .members{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
 .mcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;
@@ -1054,7 +1104,10 @@ li{margin:0 0 6px}
 .buildnote{background:#FFFBF3;border:1px solid #EEDFC2;border-radius:12px;padding:14px 16px;font-size:13px}
 .buildnote code{background:#F4EEE2;padding:1px 5px;border-radius:4px;font-size:12px}
 
-@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.fun{grid-template-columns:1fr}}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.fun{grid-template-columns:1fr}
+  .pcharts{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pcharts{grid-template-columns:1fr}}
 @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
 @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}
   .barrow{grid-template-columns:minmax(62px,34%) 1fr auto}}
@@ -1331,6 +1384,28 @@ def expert_index_card(ei: dict) -> str:
                 f'<div class="note">입력값 — {esc(inp) if inp else "기록 없음"}</div>')
 
 
+def turn_duration_card(td) -> str:
+    """workflow.turn_duration → 큰 숫자(중앙값) + 분위 칩 + 구간 분포 막대."""
+    if not isinstance(td, dict) or not td:
+        return '<p class="empty">데이터 없음 — 집계 스크립트를 다시 돌려 스캐폴드하면 채워집니다</p>'
+    head = (f'<div class="omcbig"><span class="omcpct">{esc(fmt_dur(td.get("median_sec")))}</span>'
+            f'<span class="omcsub">지시 1건이 돌아간 시간 · 중앙값<br>'
+            f'<span class="omcraw">측정 {esc(fmt_int(td.get("n")))}건 · '
+            f'합계 {esc(fmt_dur(td.get("total_sec")))}</span></span></div>'
+            f'<div class="pills" style="margin-top:10px">'
+            f'<span class="pill">p25<b>{esc(fmt_dur(td.get("p25_sec")))}</b></span>'
+            f'<span class="pill">p75<b>{esc(fmt_dur(td.get("p75_sec")))}</b></span>'
+            f'<span class="pill">p90<b>{esc(fmt_dur(td.get("p90_sec")))}</b></span>'
+            f'<span class="pill">최장<b>{esc(fmt_dur(td.get("max_sec")))}</b></span>'
+            f'<span class="pill">평균<b>{esc(fmt_dur(td.get("mean_sec")))}</b></span></div>')
+    body = ('<div style="margin-top:14px">'
+            + bar_list(pair_list(td.get("buckets")), color=ACCENT, suffix="건") + '</div>'
+            '<div class="note">사람이 프롬프트를 친 시각부터, 다음 프롬프트 전 <b>마지막 메인 어시스턴트 메시지</b>까지 '
+            '걸린 시간입니다. 자율 모드(ulw · ralph · team)가 이어서 돈 시간은 포함되고, '
+            '결과를 검토하며 기다린 시간은 빠집니다.</div>')
+    return head + body
+
+
 def render_person(data: dict) -> str:
     name = str(data.get("name") or "")
     part = str(data.get("part") or "")
@@ -1374,6 +1449,9 @@ def render_person(data: dict) -> str:
         kpi_tile("도구 호출", esc(fmt_int(g(data, "scale.tool_calls_long"))), "장기"),
         kpi_tile("직접 프롬프트", esc(fmt_int(g(data, "scale.natural_prompts"))), "장기"),
         kpi_tile("자동화 심도", esc(fmt_dec(g(data, "workflow.automation_depth"))), "최근 30일", unit="배"),
+        kpi_tile("한 지시당 실행 시간 (중앙값)",
+                 esc(fmt_dur(g(data, "workflow.turn_duration.median_sec")))
+                 if isinstance(g(data, "workflow.turn_duration"), dict) else "-", "최근 30일"),
         kpi_tile("활동 개월", esc(fmt_int(g(data, "scale.active_months"))), "장기", unit="개월"),
         kpi_tile("출력 토큰", tok_html(g(data, "scale.tok_out_30d")), "최근 30일"),
     ])
@@ -1455,7 +1533,7 @@ def render_person(data: dict) -> str:
                      + svg_vbars(omc_month, color=ACCENT2, bar_w=18, gap=9, height=86,
                                  show_values=False, label_fmt=tiny_month) + '</div></div>')
     s3 = (f'<div class="grid2">'
-          + card("도구 Top 10 (최근 30일)", bar_list(pair_list(g(data, "workflow.tools_top"), 10), color=ACCENT))
+          + card("한 지시당 실행 시간 (최근 30일)", turn_duration_card(g(data, "workflow.turn_duration")))
           + card("OMC 명령어 (장기)", omc_head + omc_body)
           + '</div><div class="grid3" style="margin-top:14px">'
           + card("모델 비중", share_stack(g(data, "workflow.models")))
@@ -1797,7 +1875,38 @@ def render_index(members, history, notes) -> str:
           + compare_card("서브에이전트 메시지 비중", members,
                          lambda d: g(d, "workflow.subagent_msg_ratio"),
                          fmt=lambda v: fmt_pct(v, 1), color=ACCENT2)
+          + compare_card("한 지시당 실행 시간 중앙값 (최근 30일)", members,
+                         lambda d: g(d, "workflow.turn_duration.median_sec"), fmt=fmt_dur)
           + '</div>')
+
+    # ── 03 개인별 그래프 ── (파트 합산이 아니라 사람마다 같은 6개 미니 차트를 나란히)
+    pcards = []
+    for m in members:
+        d = m["data"]
+        td = g(d, "workflow.turn_duration") or {}
+        markers = g(d, "speech.markers_per_100", {}) or {}
+        mk = sorted(((str(k), num(v)) for k, v in markers.items()), key=lambda x: -x[1])[:5]
+        panels = [
+            ("월별 세션 (장기)",
+             svg_vbars(pair_list(g(d, "scale.sessions_by_month")), color=ACCENT, bar_w=18, gap=8,
+                       height=110, show_values=False, label_fmt=tiny_month)),
+            ("시간대 분포 (0~23시)", hour_strip(g(d, "scale.by_hour"), base=(23, 91, 99))),
+            ("OMC 명령 Top 5 (장기)",
+             bar_list(pair_list(g(d, "workflow.omc.commands"), 5), color=ACCENT2, empty="OMC 명령 기록 없음")),
+            ("한 지시당 실행 시간 분포 (최근 30일)",
+             bar_list(pair_list(td.get("buckets")), color=ACCENT, suffix="건",
+                      empty="데이터 없음 — 집계 스크립트를 다시 돌리면 채워집니다")),
+            ("성향 5축", svg_radar(g(d, "profile.axes", {}) or {}, size=220, color=ACCENT2)),
+            ("화법 마커 Top 5 (100건당)", bar_list(mk, color=ACCENT2, fmt=lambda v: fmt_dec(v, 1))),
+        ]
+        pcards.append(
+            f'<div class="card pcard"><div class="ptop"><h3>{esc(d.get("name"))}</h3>'
+            f'<span class="mpart">{esc(d.get("part"))} · {esc(d.get("date"))}</span>'
+            f'<a class="btn btn-s" href="{esc(m["page_href"])}" style="margin-left:auto">개인 페이지</a></div>'
+            f'<div class="pcharts">'
+            + "".join(f'<div class="pchart"><div class="cardtitle">{esc(t)}</div>{b}</div>' for t, b in panels)
+            + '</div></div>')
+    s2b = "".join(pcards)
 
     # ── 03 AI 사용 전문가 지수 순위 (재미용) ──
     ranked = sorted(members, key=lambda m: -num(g(m["data"], "expert_index.score")))
@@ -1873,7 +1982,7 @@ def render_index(members, history, notes) -> str:
               heat_table(names, [str(h) for h in range(24)], hour_matrix,
                          base=(23, 91, 99), per_row=True))
 
-    # ── 07 도구 · OMC · 모델 합산 ──
+    # ── 08 OMC · 모델 합산 ──
     def agg(getter):
         acc = {}
         for m in members:
@@ -1888,8 +1997,7 @@ def render_index(members, history, notes) -> str:
                 acc[k] = acc.get(k, 0) + v
         return sorted(acc.items(), key=lambda x: -x[1])[:6]
 
-    s7 = ('<div class="grid3">'
-          + card("도구 Top 10 (파트 합산)", bar_list(agg(lambda d: g(d, "workflow.tools_top")), color=ACCENT))
+    s7 = ('<div class="grid2">'
           + card("OMC 명령 Top 10 (파트 합산)",
                  bar_list(agg(lambda d: g(d, "workflow.omc.commands")), color=ACCENT2))
           + card("모델 비중 (멤버 평균)", share_stack([[k, v] for k, v in agg_share()]))
@@ -1935,13 +2043,14 @@ def render_index(members, history, notes) -> str:
     body = (hero + '<div class="wrap">' + kpis
             + sec("01", "멤버", s1, f"{len(members)}명 · (파트, 이름) 별 최신 1건")
             + sec("02", "비교", s2, "정렬된 가로막대")
-            + sec("03", "AI 사용 전문가 지수 순위", s3, "재미용")
-            + sec("04", "성향 프로파일 비교", s4)
-            + sec("05", "말투 비교", s5)
-            + sec("06", "시간대", s6)
-            + sec("07", "도구 · OMC · 모델", s7, "파트 합산")
-            + sec("08", "공유 자산과 제안", s8)
-            + sec("09", "이력", s9)
+            + sec("03", "개인별 그래프", s2b, "사람마다 같은 6개 차트 · 파트 합산 아님")
+            + sec("04", "AI 사용 전문가 지수 순위", s3, "재미용")
+            + sec("05", "성향 프로파일 비교", s4)
+            + sec("06", "말투 비교", s5)
+            + sec("07", "시간대", s6)
+            + sec("08", "OMC · 모델", s7, "파트 합산")
+            + sec("09", "공유 자산과 제안", s8)
+            + sec("10", "이력", s9)
             + build_note_html(notes)
             + '<footer class="foot">'
               '<p>전문가 지수·MBTI·나이대·혈액형은 <b>재미용</b>입니다. 인사 평가나 줄세우기에 쓰지 마세요.</p>'
