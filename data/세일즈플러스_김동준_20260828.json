@@ -11,10 +11,7 @@
     "python": "3.14.7"
   },
   "coverage": {
-    "history": {
-      "from": "2026-01-30",
-      "to": "2026-08-28"
-    },
+    "history": null,
     "session_stats": {
       "from": "2026-02-06",
       "to": "2026-08-28"
@@ -23,25 +20,25 @@
       "from": "2026-07-29",
       "to": "2026-08-28"
     },
-    "speech_sample_size": 902,
+    "speech_sample_size": 911,
     "failed_items": []
   },
   "summary": {
-    "one_liner": "Claude Code 를 고객맞춤오퍼링플랫폼(CPF) Lambda 백엔드 3종 + 실시간 타겟처리(sirius) + 선타겟처리(nebula) 개발 용도로, OMC 자율 실행 모드(ultrawork·ralph·autopilot)에 큰 단위로 맡기는 방식으로, 주로 cpf-pre-target-builder-func · nebula · sirius 에서 쓴다",
-    "habit": "자연어 프롬프트 끝에 ulw · ralph 매직 키워드를 붙여 자율 모드로 던진다 — 자연어 프롬프트의 42.3% 에 키워드, 전체 프롬프트의 50.9% 가 OMC 명령",
-    "effect": "자동화 심도 115.5배 (직접 프롬프트 185턴 → 도구 호출 21,369회) — 한 번 지시하면 코드리뷰·검증 에이전트까지 돌아 나온다",
-    "pain": "자율 모드 종료·재지시 관리 — cancel 스킬 누적 544회(스킬 사용 1위), 불만·교정 마커 19.5/100 (마커 1위), '여전히' 24회"
+    "one_liner": "",
+    "habit": "",
+    "effect": "",
+    "pain": ""
   },
   "scale": {
-    "sessions_long": 753,
+    "sessions_long": 756,
     "active_months": 7,
-    "tool_calls_long": 64706,
-    "natural_prompts": 1166,
-    "slash_prompts": 1750,
-    "subagent_msgs_30d": 13912,
-    "tok_out_30d": 46362473,
-    "thinking_tok_30d": 18421047,
-    "tok_cache_read_30d": 7907521565,
+    "tool_calls_long": 65020,
+    "natural_prompts": 1176,
+    "slash_prompts": 1754,
+    "subagent_msgs_30d": 13973,
+    "tok_out_30d": 47181820,
+    "thinking_tok_30d": 18821155,
+    "tok_cache_read_30d": 8041430398,
     "sessions_by_month": [
       [
         "2026-02",
@@ -69,7 +66,7 @@
       ],
       [
         "2026-08",
-        162
+        165
       ]
     ],
     "prompts_by_month": [
@@ -103,7 +100,7 @@
       ],
       [
         "2026-08",
-        611
+        625
       ]
     ],
     "by_hour": [
@@ -120,8 +117,8 @@
       296,
       131,
       6,
-      260,
-      303,
+      268,
+      309,
       290,
       362,
       37,
@@ -151,7 +148,7 @@
       ],
       [
         "Fri",
-        598
+        612
       ],
       [
         "Sat",
@@ -162,11 +159,11 @@
         0
       ]
     ],
-    "rhythm_note": "07시 416건이 최다인 07시 출근형. 07~11시 첫 봉우리 → 12시 6건(점심) → 13~16시 두 번째 봉우리 → 17시 이후 급감. 22~06시 0.6%, 토·일 0건 — 근무시간 안에서만 쓴다"
+    "rhythm_note": ""
   },
   "projects_top": [
     {
-      "project": "nebula",
+      "project": "blanker-cafe24",
       "sessions": 45,
       "active_days": 16,
       "human_turns": 59,
@@ -184,22 +181,31 @@
       "period": "2026-08-03 ~ 2026-08-26"
     },
     {
-      "project": "sirius",
+      "project": "order",
       "sessions": 34,
-      "active_days": 10,
+      "active_days": 11,
       "human_turns": 36,
-      "tool_calls": 4624,
+      "tool_calls": 4674,
       "main_model": "claude-opus-5",
-      "period": "2026-07-29 ~ 2026-08-27"
+      "period": "2026-07-29 ~ 2026-08-28"
     },
     {
       "project": "cpf-target-builder-func",
       "sessions": 31,
       "active_days": 14,
-      "human_turns": 27,
-      "tool_calls": 2915,
+      "human_turns": 28,
+      "tool_calls": 2934,
       "main_model": "claude-opus-5",
       "period": "2026-08-02 ~ 2026-08-28"
+    },
+    {
+      "project": "members",
+      "sessions": 5,
+      "active_days": 1,
+      "human_turns": 12,
+      "tool_calls": 316,
+      "main_model": "claude-opus-5",
+      "period": "2026-08-28 ~ 2026-08-28"
     },
     {
       "project": "comet",
@@ -229,16 +235,7 @@
       "period": "2026-08-04 ~ 2026-08-05"
     },
     {
-      "project": "members",
-      "sessions": 3,
-      "active_days": 1,
-      "human_turns": 4,
-      "tool_calls": 259,
-      "main_model": "claude-opus-5",
-      "period": "2026-08-28 ~ 2026-08-28"
-    },
-    {
-      "project": "etc",
+      "project": "imagine-v1",
       "sessions": 2,
       "active_days": 2,
       "human_turns": 3,
@@ -258,20 +255,20 @@
   ],
   "projects_other_count": 3,
   "workflow": {
-    "automation_depth": 115.5,
+    "automation_depth": 111.4,
     "turn_duration": {
-      "n": 181,
-      "median_sec": 291.8,
-      "p25_sec": 152.1,
+      "n": 185,
+      "median_sec": 289.0,
+      "p25_sec": 150.5,
       "p75_sec": 597.6,
       "p90_sec": 1472.6,
       "max_sec": 65503.9,
-      "mean_sec": 907.9,
-      "total_sec": 164321.6,
+      "mean_sec": 892.0,
+      "total_sec": 165013.7,
       "buckets": [
         [
           "1분 이하",
-          16
+          19
         ],
         [
           "1~5분",
@@ -279,7 +276,7 @@
         ],
         [
           "5~15분",
-          63
+          64
         ],
         [
           "15~60분",
@@ -294,54 +291,54 @@
     "tools_top": [
       [
         "Bash",
-        13872
+        13988
       ],
       [
         "Edit",
-        2429
+        2424
       ],
       [
         "Read",
-        1879
+        1878
       ],
       [
         "SendMessage",
-        385
+        387
       ],
       [
         "mcp__plugin_oh-my-claudecode_t__state_clear",
-        380
+        386
       ],
       [
         "ToolSearch",
-        337
-      ],
-      [
-        "mcp__plugin_oh-my-claudecode_t__state_list_active",
-        233
+        340
       ],
       [
         "mcp__claude-in-chrome__javascript_tool",
-        232
+        276
+      ],
+      [
+        "mcp__plugin_oh-my-claudecode_t__state_list_active",
+        238
+      ],
+      [
+        "mcp__claude-in-chrome__computer",
+        226
       ],
       [
         "mcp__plugin_oh-my-claudecode_t__state_read",
-        208
-      ],
-      [
-        "Write",
-        187
+        209
       ]
     ],
     "omc": {
       "commands": [
         [
           "ultrawork",
-          1052
+          1058
         ],
         [
           "ralph",
-          882
+          883
         ],
         [
           "autopilot",
@@ -352,11 +349,11 @@
           42
         ],
         [
-          "team",
-          15
+          "execute",
+          16
         ],
         [
-          "execute",
+          "team",
           15
         ],
         [
@@ -397,19 +394,19 @@
         ]
       ],
       "distinct_commands": 15,
-      "prompts_with_omc": 1501,
-      "prompts_total": 2949,
+      "prompts_with_omc": 1507,
+      "prompts_total": 2963,
       "omc_ratio": 0.509,
-      "slash_omc_ratio": 0.54,
+      "slash_omc_ratio": 0.539,
       "keyword_ratio": 0.423,
       "keyword_forms": [
         [
           "ulw",
-          1030
+          1036
         ],
         [
           "ralph",
-          885
+          886
         ],
         [
           "autopilot",
@@ -447,14 +444,14 @@
         ],
         [
           "2026-08",
-          331
+          337
         ]
       ]
     },
     "subagent_types": [
       [
         "oh-my-claudecode:code-reviewer",
-        59
+        60
       ],
       [
         "Explore",
@@ -497,11 +494,11 @@
     "models": [
       [
         "claude-opus-5",
-        0.78
+        0.77
       ],
       [
         "claude-fable-5",
-        0.18
+        0.19
       ],
       [
         "claude-sonnet-5",
@@ -539,11 +536,11 @@
     "mcp_servers": [
       [
         "plugin_oh-my-claudecode_t",
-        943
+        954
       ],
       [
         "claude-in-chrome",
-        656
+        766
       ],
       [
         "context7",
@@ -561,7 +558,7 @@
     "skills": [
       [
         "oh-my-claudecode:cancel",
-        544
+        546
       ],
       [
         "oh-my-claudecode:autopilot",
@@ -589,7 +586,7 @@
       ],
       [
         "oh-my-claudecode:execute",
-        15
+        16
       ],
       [
         "oh-my-claudecode:team",
@@ -600,7 +597,7 @@
         12
       ]
     ],
-    "style_note": "세션을 /autopilot 으로 열거나 자연어 지시 끝에 ulw · ralph 를 붙여, 가장 강한 모델(opus-5 77%)을 최상위 effort(xhigh+max 99.4%)와 auto 권한으로 돌린다. 도구의 65% 가 Bash 인 것은 Lambda 배포·로그 조회·테스트를 Claude 가 직접 실행하게 두기 때문이고, 그 결과를 code-reviewer(59회)·critic(19회)·verifier(11회)로 한 번 더 거른다. 8월 후반부터는 team 모드(SendMessage 385회)로 executor 여러 개를 동시에 굴리는 쪽으로 옮겨가는 중이다. 사람이 개입하는 건 방향 판단과 결과 재검토이며 그 외 실행은 전부 위임한다."
+    "style_note": ""
   },
   "speech": {
     "politeness": {
@@ -611,11 +608,11 @@
     "endings_top": [
       [
         "같아",
-        58
+        59
       ],
       [
         "처리해줘",
-        43
+        46
       ],
       [
         "수정해줘",
@@ -655,7 +652,7 @@
     "vocab_top": [
       [
         "파일",
-        63
+        65
       ],
       [
         "검토해줘",
@@ -663,7 +660,7 @@
       ],
       [
         "같아",
-        59
+        60
       ],
       [
         "수정해줘",
@@ -671,7 +668,7 @@
       ],
       [
         "다시",
-        55
+        56
       ],
       [
         "부분",
@@ -679,36 +676,36 @@
       ],
       [
         "지금",
-        51
+        52
+      ],
+      [
+        "처리해줘",
+        50
       ],
       [
         "내용",
         49
       ],
       [
-        "처리해줘",
-        47
-      ],
-      [
         "프로젝트",
-        45
+        46
       ]
     ],
     "markers_per_100": {
-      "불만·교정": 19.5,
-      "완곡·탐색": 15.1,
-      "검증요구": 13.0,
-      "강조·단정": 5.8,
+      "불만·교정": 19.4,
+      "완곡·탐색": 15.0,
+      "검증요구": 13.1,
+      "강조·단정": 5.7,
       "칭찬·수용": 1.4,
       "위임·자율": 0.3,
       "속도·긴급": 0.1,
       "범위한정": 1.1,
-      "설명요구": 3.5,
+      "설명요구": 3.6,
       "사과·완충": 2.9
     },
     "len_chars": {
       "median": 53,
-      "p90": 154,
+      "p90": 157,
       "max": 5238
     },
     "sentences_per_prompt": 3.71,
@@ -717,27 +714,19 @@
       "p25": 211,
       "p90": 1712
     },
-    "short_followup_ratio": 0.091,
+    "short_followup_ratio": 0.09,
     "laugh_prompts": 6,
     "emoji_prompts": 5,
-    "korean_prompts": 902,
-    "non_korean_prompts": 264,
+    "korean_prompts": 911,
+    "non_korean_prompts": 265,
     "english_mixed_ratio": 0.87,
     "punctuation": {
-      "question": 402,
+      "question": 403,
       "exclaim": 87,
       "none_ratio": 0.68
     },
-    "style_summary": [
-      "반말 72% + 체언종결 28% 로 문장을 짧게 끊고, '~같아' 로 가설을 열어 '~해줘 ulw' 로 닫는다 — 종결 1위 '같아' 58, 끝 2글자 '해줘' 342, 키워드 ulw 1,030",
-      "첫 단어 '이어서'(24) · '더'(18) · '지금'(10) 처럼 항상 직전 결과에 이어 붙이고, 이미지·로그·에러 메시지를 그대로 붙여넣어 근거를 준다 (최장 프롬프트 5,238자는 CloudWatch 로그)",
-      "불만·교정 19.5 > 완곡·탐색 15.1 > 검증요구 13.0 — '검토해줘 → 수정해줘 → 여전히 그래, 다시' 의 3박자가 기본 리듬이며, 화는 안 내고('미안' 4회) 근거를 더 붙여 다시 시킨다"
-    ],
-    "reproduced_prompts": [
-      "이어서 람다 배포 스크립트도 같이 봐줘. 지금은 sandbox 환경변수를 못 읽는 것 같은데 말야. prod 쪽은 건드리지 말고 sandbox 만 수정해줘. ulw",
-      "[Image #1] 주문 목록 페이지에서 페이징 API 가 두 번 호출되는 것 같아. 쿼리 로그 남겨서 원인 검토해줘. 고친 뒤에 CLAUDE.md 에도 넣어줘. ulw ralph",
-      "그럼 이 컬럼은 ISNULL 처리 안 해도 되는 거 아냐? 기존 데이터에 NULL 이 있는지 먼저 확인하고, 없으면 제거해줘."
-    ]
+    "style_summary": [],
+    "reproduced_prompts": []
   },
   "assets": {
     "counts": {
@@ -753,120 +742,47 @@
       "plugins": 4,
       "project_claude_md": 31
     },
-    "share_worthy": [
-      {
-        "asset": "rules/context7.md",
-        "reason": "SDK·프레임워크 질문 시 문서를 먼저 조회하게 하는 한 파일짜리 규칙. 스택에 무관하게 그대로 복사해 쓸 수 있다"
-      },
-      {
-        "asset": "'사고 → CLAUDE.md 금지 규칙' 즉시 기록 습관",
-        "reason": "같은 실패를 두 번 안 겪게 하는 가장 값싼 방법. 프로젝트 CLAUDE.md 31개가 이 방식으로 자랐다"
-      },
-      {
-        "asset": "진단 저장소(members) 자체",
-        "reason": "'진단' 한 단어로 보고서 3종을 뽑고 GitHub Pages 대시보드에 모으는 워크플로. 본인이 만든 것이므로 파트 표준으로 안착시키는 역할까지 자연스럽다"
-      }
-    ]
+    "share_worthy": []
   },
-  "cases": [
-    {
-      "title": "알림톡 버튼 링크 스테이지 문제 조사 → 라우트 5개 수정 (team 모드)",
-      "project": "sirius",
-      "when": "2026-08-27",
-      "task": "알림톡 템플릿 버튼 링크를 prod 스테이지로 재승인·코드 교체한 것이 문제인지 확인, 이어서 무엇을 해야 하는지와 재업로드 URL 변경 방법",
-      "how": "/oh-my-claudecode:team — executor 3 · general-purpose 2 · code-reviewer 1 · critic 1 · verifier 1, SendMessage 64. claude-opus-5 1,004 + claude-fable-5 591",
-      "human_turns": 3,
-      "tool_calls": 840,
-      "outcome": "변경 파일 26개 (routes/reupload.py · webdav_client.py · routes/batch.py · cafe24_token_store.py · routes/messaging.py 외) · 브랜치 main·sandbox",
-      "saving": "약 4시간 → 실질 개입 30분 내외 (tool_calls 840 · files 26 · human_turns 3)"
-    },
-    {
-      "title": "샘플(-new) 페이지 sandbox/prod URL 분기 + 첨부 파일명 노출 + 주문 플로우 연결 (plan → ulw 반복)",
-      "project": "nebula",
-      "when": "2026-08-19",
-      "task": "-new 샘플 페이지는 sandbox, 정식 배포는 prod URL 로 연결하고 CLAUDE.md 에 기록 → 첨부를 파일명으로 노출 → 타임스탬프 접두 형식 변경 → detail-new 에서 orderform-new 로 연결 → 실사이트 튕김 검토",
-      "how": "/oh-my-claudecode:plan 으로 계획 문서 생성 후 ulw · ulw ralph 로 실행. Explore 1. claude-fable-5 354 + claude-opus-5 58",
-      "human_turns": 10,
-      "tool_calls": 202,
-      "outcome": "변경 파일 15개 (skin12/product/detail-new.html · CLAUDE.md · order/orderform-new.html + 다른 저장소 sirius/app/cafe24_api.py 까지) · 브랜치 main",
-      "saving": "약 8시간 → 2시간 (사람 10턴 · 도구 202회, UI 확인이 필요한 작업이라 재지시 10회)"
-    },
-    {
-      "title": "선타겟처리 헤더·사이드바 리디자인을 브라우저로 직접 확인하며 수정 (autopilot + Chrome)",
-      "project": "nebula",
-      "when": "2026-08-05",
-      "task": "스크린샷을 붙여 페이지 넓이 1280 맞춤 → 6개 페이지에 새 헤더 sidebar-new 적용 → 글자·아이콘 크기 3회 확대",
-      "how": "/autopilot + ulw · ulw ralph. claude-in-chrome computer 42 · javascript_tool 34 · navigate 22 로 실제 페이지 비교. 서브에이전트 없음. claude-opus-5 429",
-      "human_turns": 5,
-      "tool_calls": 270,
-      "outcome": "변경 파일 11개 (layout/sidebar-new.css 35회 · sidebar-new.js · new-list.html · mypage.html · member-edit.html) · 브랜치 main",
-      "saving": "약 3시간 → 40분 (브라우저 도구 98회를 Claude 가 대신 클릭·측정)"
-    },
-    {
-      "title": "Lambda 에러 로그 붙여넣기 → 환경변수(.env.dev) 로딩 버그 수정 (ralph)",
-      "project": "comet",
-      "when": "2026-08-06",
-      "task": "CloudWatch ERROR 로그 원문을 첫 프롬프트로 붙이고 '.env.dev 를 못 읽어서 발생한 거 같아' 가설 → ENV_REQUIRED_MISSING 재첨부 → cp 실패 처리 → Dockerfile 까지 확장",
-      "how": "ralph (스킬 로드 291회) + ultrawork 29 — 완료 조건까지 반복. architect 1. claude-opus-5 508",
-      "human_turns": 5,
-      "tool_calls": 268,
-      "outcome": "변경 파일 17개 (src/env.ts · CLAUDE.md · package.json · Dockerfile.test · Dockerfile · template.yaml · test/envDefaults.verify.ts) · 브랜치 main",
-      "saving": "약 4시간 → 1시간 (5턴 · 도구 268회 · 검증 테스트 파일 생성 포함)"
-    },
-    {
-      "title": "이 진단 저장소 보완 — OMC 명령어 비중 + AI 전문가 지수 추가 (team, 창조주 사례)",
-      "project": "members",
-      "when": "2026-08-28",
-      "task": "bash 명령 상세 대신 프롬프트 내 OMC 명령어 사용 비중을 측정하고, 재미 코너에 AI 사용 전문가 지수(점수)를 추가 — 이 보고서의 4장 OMC 표와 9장 전문가 지수가 이 한 턴에서 만들어졌다",
-      "how": "/oh-my-claudecode:team — executor 2 · verifier 1, SendMessage 12. 결과 대시보드를 claude-in-chrome computer 24회로 직접 확인. claude-opus-5 459 + claude-fable-5 144",
-      "human_turns": 1,
-      "tool_calls": 294,
-      "outcome": "변경 파일 15개 (scripts/build_site.py · README.md · CLAUDE.md · scripts/test_build_site.py · docs 5종 · data/README.md) · 브랜치 main",
-      "saving": "약 8시간 → 1.5시간 (human_turns 1 · tool_calls 294 · 문서 6종 포함 15 파일 동기화)"
-    }
-  ],
+  "cases": [],
   "profile": {
     "axes": {
-      "delegation": 4,
-      "verification": 4,
-      "planning": 2,
-      "perfectionism": 4,
-      "exploration": 4
+      "delegation": null,
+      "verification": null,
+      "planning": null,
+      "perfectionism": null,
+      "exploration": null
     },
     "axes_evidence": {
-      "delegation": "위임·자율 마커 0.3/100 으로 낮지만 위임을 명령으로 한다 — OMC 자율 모드 프롬프트 50.9% (ulw 1,052 · ralph 882 · autopilot 823), 서브에이전트 메시지 비중 34.0%, permission mode auto 100%, 자동화 심도 115.5배",
-      "verification": "검증요구 마커 13.0/100, '검토해줘' 어휘 61회, 서브에이전트 1위 code-reviewer 59 + critic 19 + verifier 11 = 리뷰·검증 계열 51% (89/173), claude-in-chrome 656회",
-      "planning": "plan 슬래시 2회 · plan 스킬 로드 179 · analyze 42 vs autopilot 823 + ulw 1,052 + ralph 882 — 일단 돌려보고 고친다. 대신 프로젝트 CLAUDE.md 31개에 규칙을 미리 적어 계획을 대신한다",
-      "perfectionism": "불만·교정 마커 19.5/100 (10종 중 1위), '다시' 55 · '여전히' 24. 짧은 후속 지시 9.1% 로 낮아 한마디가 아니라 3.71문장으로 설명해 다시 시킨다",
-      "exploration": "완곡·탐색 15.1 vs 강조·단정 5.8 → 2.6:1, 종결 1위 '같아' 58 · '않을까' 17 · '있을까' 16 · 물음표 402"
+      "delegation": "",
+      "verification": "",
+      "planning": "",
+      "perfectionism": "",
+      "exploration": ""
     },
-    "rhythm": "07시 출근형 — 07시 416건 최다, 07~11시 1,532건 → 12시 6건 → 13~16시 1,215건 → 17시 이후 196건, 22~06시 0.6%, 토·일 0건. 프롬프트 간격 중앙값 516초(p90 1,713초) — 자율 모드를 8~9분 돌려놓고 결과를 본 뒤 지시. 8월 세션 162개로 역대 최다",
-    "interest": "어휘: 파일 63 · 이미지 43 · 람다 35 · 데이터 31 · 메시지 30 · 쿼리 28 · 로그 25 · 계약 24. 도구: Bash 64.9%, claude-in-chrome 656. 주력: CPF Lambda 3종(30일 세션 95개) + sirius(34) + nebula(45) — AWS Lambda 백엔드 데이터 파이프라인이 본진, 선타겟처리까지 풀스택",
-    "definition": "이 사람은 자율 실행 모드(ulw·ralph·autopilot)에 큰 단위로 맡기고, 결과를 코드리뷰 에이전트와 본인의 눈으로 두 번 거른 뒤 배운 규칙을 CLAUDE.md 에 바로 적어두는 개발자다",
-    "teammate_tips": [
-      "가설형으로 말한다 — '~같아' '~아닐까?' 는 확신이 없다는 뜻이 아니라 '확인해 봐 달라' 는 요청이다 (완곡·탐색 15.1/100). 근거를 붙여 답하면 대화가 빨리 끝난다",
-      "오전 7~11시에 가장 활발하다 (하루 프롬프트의 절반). 급한 협업 요청은 오전에, 17시 이후·주말은 사실상 응답이 없다고 보면 된다 (17시 이후 5%, 주말 0건)",
-      "실패를 규칙으로 바꿔 놓는다 — 사고가 나면 그 자리에서 'CLAUDE.md 에도 넣어줘' 를 한다 (프로젝트 CLAUDE.md 31개). 이 사람 프로젝트에 합류하면 CLAUDE.md 부터 읽는 게 가장 빠른 온보딩이다"
-    ]
+    "rhythm": "",
+    "interest": "",
+    "definition": "",
+    "teammate_tips": []
   },
   "fun": {
     "mbti": {
-      "value": "ESTP",
-      "strength": "약함",
-      "basis": "E: 서브에이전트 메시지 34% · team 모드 외부 위임 / S: 이미지·로그·파일명을 붙인 구체 지시(영어 혼용 87%, 3.7문장) / T: 칭찬·수용 1.4 + 사과·완충 2.9 로 감정 표현 최소 / P: plan 2회 vs autopilot 823회"
+      "value": "",
+      "strength": "",
+      "basis": ""
     },
     "age_band": {
-      "value": "30대 후반",
-      "strength": "약함",
-      "basis": "ㅋㅋ/ㅎㅎ 6건 · 이모지 5건 (1% 미만) · 존댓말 0.3% · 말줄임 72건 · 야간 0.6% · 07시 출근 — 채팅체 없는 업무체와 규칙적 근무 리듬. 통계적 인상일 뿐 틀릴 수 있다"
+      "value": "",
+      "strength": "",
+      "basis": ""
     },
     "blood_type": {
-      "value": "O형",
+      "value": "",
       "strength": "없음(무작위)",
-      "basis": "데이터 신호 0. 억지 논리: 07시부터 '응응!' 하고 하루 400건을 밀어붙이는 추진력은 O형이라고들 하니까. 근거 없음"
+      "basis": ""
     },
-    "nickname": "ulw 세 글자로 오케스트라를 지휘하는 새벽 7시의 창조주",
-    "pair_programming": "키보드는 이 사람이 잡지 않는다 — 스크린샷과 로그를 붙이고 '이거 ~때문 아닐까?' 라고 가설을 던지면 옆에서 확인하는 구도가 된다. 결과가 마음에 안 들면 화내는 대신 '여전히 …' 하고 근거를 하나 더 붙여 다시 시키니 세 번째 시도까지는 각오하되 방향은 늘 명확하다. 끝나면 'CLAUDE.md 에도 넣어줘' 가 나오므로 그날 배운 건 반드시 문서로 남는다"
+    "nickname": "",
+    "pair_programming": ""
   },
   "expert_index": {
     "formula_version": 1,
@@ -881,8 +797,8 @@
       "omc": 20.0
     },
     "inputs": {
-      "sessions_long": 753,
-      "automation_depth": 115.5,
+      "sessions_long": 756,
+      "automation_depth": 111.4,
       "subagent_msg_ratio": 0.34,
       "asset_points": 10,
       "omc_ratio": 0.509,
@@ -890,26 +806,10 @@
     }
   },
   "feedback": {
-    "works_well": [
-      "Lambda 백엔드의 다중 파일 수정 + 리뷰·검증 일괄 처리 — 사례 1 (사람 3턴, 도구 840회, 26 파일, code-reviewer·critic·verifier 동시 투입). 자동화 심도 115.5배의 원천",
-      "로그·에러 메시지 붙여넣기 → 원인 추적 → 수정 — 사례 4 (CloudWatch 로그가 첫 프롬프트, 5턴에 17 파일). 최장 프롬프트 5,238자도 로그. 재현이 어려운 환경 문제를 ralph 로 반복시켜 잡는다",
-      "브라우저로 결과를 눈으로 확인해야 하는 UI 작업 — 사례 3 (claude-in-chrome 98회, 30일 합계 656회). 스크린샷 한 장 + 한 줄 지시로 6개 페이지 헤더 교체"
-    ],
-    "works_poorly": [
-      "미묘한 UI 크기·간격 조정 — 사례 3 에서 '좀 더 커야 할거 같아' 를 3회 반복. 이미지로만 의도를 전하면 수치 없이 왕복이 늘어난다 (불만·교정 19.5/100)",
-      "환경변수·Docker·배포 설정 계열 — 사례 4 처럼 .env.dev / .env.prd / Dockerfile 이 얽히면 ralph 로도 한 번에 안 끝나 '여전히'(24회) 가 나온다",
-      "자율 모드의 종료·상태 관리 — cancel 스킬 누적 544회로 사용 1위, state_clear 380회 · state_list_active 233회로 30일 도구 호출 상위권. 모드 정리에 도구 호출의 약 4% 소모"
-    ],
-    "blockers": [
-      "ULTRAWORK #n/50 Stop hook 피드백이 반복 주입됨 (사례 4, 사례 5 에서 #1~#6 연속) — 자율 모드가 끝났는데 종료가 안 돼 cancel 을 손으로 부른 흔적",
-      "/exit 211 · /clear 318 — 30일 세션 192개 중 사람 발화가 있는 세션은 85개로, 절반 이상이 슬래시 조작만 하고 닫힌 세션",
-      "/claer 오타 3회 · /login 22회 — 재로그인이 잦았던 구간. 사례 2 에서 코드 수정과 실제 배포 반영 사이의 간극을 두 번 확인"
-    ],
-    "proposals": [
-      "공용 규칙 파일 표준화 — rules/context7.md 처럼 스택 무관 규칙을 파트 공통 ~/.claude/rules/ 세트로 배포",
-      "프로젝트 CLAUDE.md 크기 가이드 — sirius 156KB · nebula 75KB 는 매 세션 컨텍스트를 차지한다. '규칙은 CLAUDE.md, 상세는 docs/ 로 분리하고 링크' 하는 members 방식을 파트 표준으로",
-      "이 진단을 월 1회 정기 실행 — 트랜스크립트가 30일이면 지워지므로 매달 뽑아야 3·4·7장 추이가 남는다. 첫 회차 기준선 대비 OMC 비중·자동화 심도 변화를 대시보드에서 비교"
-    ]
+    "works_well": [],
+    "works_poorly": [],
+    "blockers": [],
+    "proposals": []
   },
-  "script_commit": "710ab96"
+  "script_commit": "0b683a1"
 }
