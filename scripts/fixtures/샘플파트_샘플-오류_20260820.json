@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "part": "샘플파트",
+  "name": "샘플-오류",
+  "date": "2026-08-20",
+  "role": "일부러 망가뜨린 예시 파일",
+  "highlight": "빌드 노트와 --check 메시지를 보여주기 위한 파일입니다",
+  "env": {
+    "claude_code": "2.1.180",
+    "os": "Darwin 25.4.0",
+    "python": "3.12.3"
+  },
+  "coverage": {
+    "history": {
+      "from": "2026-06-09",
+      "to": "2026-08-27"
+    },
+    "session_stats": {
+      "from": "2026-06-09",
+      "to": "2026-08-27"
+    },
+    "transcripts": {
+      "from": "2026-07-29",
+      "to": "2026-08-27"
+    },
+    "speech_sample_size": 88,
+    "failed_items": []
+  },
+  "summary": {
+    "one_liner": "검증에 걸리는 예시 — 대시보드 '빌드 노트' 동작 확인용",
+    "habit": "명사로 끝나는 짧은 메모처럼 던진다",
+    "effect": "일회성 스크립트를 빨리 만든다",
+    "pain": "파이프라인 전체 맥락을 설명하기가 번거롭다"
+  },
+  "scale": {
+    "sessions_long": 61,
+    "active_months": 3,
+    "tool_calls_long": 2400,
+    "natural_prompts": 310,
+    "slash_prompts": 48,
+    "subagent_msgs_30d": 40,
+    "tok_out_30d": 380000,
+    "thinking_tok_30d": 52000,
+    "tok_cache_read_30d": 8600000,
+    "sessions_by_month": [
+      [
+        "2026-06",
+        12
+      ],
+      [
+        "2026-07",
+        21
+      ],
+      [
+        "2026-08",
+        28
+      ]
+    ],
+    "prompts_by_month": [
+      [
+        "2026-06",
+        22
+      ],
+      [
+        "2026-07",
+        38
+      ],
+      [
+        "2026-08",
+        52
+      ]
+    ],
+    "by_hour": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      8,
+      11,
+      9,
+      4,
+      8,
+      12,
+      11,
+      9,
+      6,
+      10,
+      8,
+      6,
+      4,
+      2
+    ],
+    "by_dow": [
+      [
+        "Mon",
+        21
+      ],
+      [
+        "Tue",
+        24
+      ],
+      [
+        "Wed",
+        22
+      ],
+      [
+        "Thu",
+        18
+      ],
+      [
+        "Fri",
+        17
+      ],
+      [
+        "Sat",
+        7
+      ],
+      [
+        "Sun",
+        3
+      ]
+    ],
+    "rhythm_note": "낮에 고르게 쓰고 저녁 6~8시에 한 번 더 몰린다"
+  },
+  "projects_top": [
+    {
+      "project": "샘플-적재",
+      "sessions": 38,
+      "active_days": 16,
+      "human_turns": 142,
+      "tool_calls": 820,
+      "main_model": "claude-sonnet-5",
+      "period": "2026-07-29 ~ 2026-08-27"
+    },
+    {
+      "project": "샘플-리포트",
+      "sessions": 14,
+      "active_days": 7,
+      "human_turns": 51,
+      "tool_calls": 260,
+      "main_model": "claude-haiku-4-5",
+      "period": "2026-08-05 ~ 2026-08-25"
+    }
+  ],
+  "projects_other_count": 1,
+  "workflow": {
+    "automation_depth": 3.4,
+    "tools_top": [
+      [
+        "Bash",
+        980
+      ],
+      [
+        "Read",
+        620
+      ],
+      [
+        "Grep",
+        310
+      ],
+      [
+        "Edit",
+        240
+      ],
+      [
+        "Write",
+        130
+      ],
+      [
+        "Glob",
+        80
+      ],
+      [
+        "TodoWrite",
+        24
+      ],
+      [
+        "WebFetch",
+        12
+      ]
+    ],
+    "omc": {
+      "commands": [
+        [
+          "execute",
+          12
+        ],
+        [
+          "plan",
+          7
+        ]
+      ],
+      "distinct_commands": 2,
+      "prompts_with_omc": 7,
+      "prompts_total": 112,
+      "omc_ratio": 0.06,
+      "slash_omc_ratio": 0.08,
+      "keyword_ratio": 0.03,
+      "keyword_forms": [],
+      "by_month": [
+        [
+          "2026-08",
+          7
+        ]
+      ]
+    },
+    "subagent_types": [
+      [
+        "Explore",
+        5
+      ]
+    ],
+    "subagent_msg_ratio": 0.05,
+    "models": [
+      [
+        "claude-sonnet-5",
+        0.68
+      ],
+      [
+        "claude-haiku-4-5",
+        0.32
+      ]
+    ],
+    "effort": [],
+    "permission_mode": [
+      [
+        "default",
+        1.0
+      ]
+    ],
+    "mcp_servers": [],
+    "skills": [
+      [
+        "plan",
+        7
+      ]
+    ],
+    "style_note": "명사로 끝나는 짧은 지시가 많고 한 세션이 길지 않다. 도구 호출도 짧게 끊긴다. 로그를 붙여넣고 원인을 묻는 형태가 자주 보인다."
+  },
+  "speech": {
+    "politeness": {
+      "formal": 0.21,
+      "casual": 0.35,
+      "noun": 0.44
+    },
+    "endings_top": [
+      [
+        "확인",
+        48
+      ],
+      [
+        "부탁",
+        31
+      ],
+      [
+        "수정",
+        27
+      ],
+      [
+        "필요",
+        19
+      ],
+      [
+        "가능",
+        14
+      ]
+    ],
+    "first_words_top": [
+      [
+        "이거",
+        22
+      ],
+      [
+        "로그",
+        17
+      ],
+      [
+        "적재",
+        12
+      ],
+      [
+        "에러",
+        11
+      ],
+      [
+        "스크립트",
+        8
+      ]
+    ],
+    "vocab_top": [
+      [
+        "적재",
+        62
+      ],
+      [
+        "로그",
+        54
+      ],
+      [
+        "스케줄",
+        38
+      ],
+      [
+        "파케이",
+        27
+      ],
+      [
+        "에러",
+        24
+      ],
+      [
+        "파티션",
+        19
+      ],
+      [
+        "재처리",
+        16
+      ],
+      [
+        "스키마",
+        12
+      ],
+      [
+        "집계",
+        9
+      ],
+      [
+        "압축",
+        6
+      ]
+    ],
+    "markers_per_100": {
+      "불만·교정": 8.4,
+      "완곡·탐색": 6.1,
+      "검증요구": 9.2,
+      "강조·단정": 3.4,
+      "칭찬·수용": 2.8,
+      "위임·자율": 2.1,
+      "범위한정": 4.8,
+      "설명요구": 6.4
+    },
+    "len_chars": {
+      "median": 44,
+      "p90": 168,
+      "max": 980
+    },
+    "sentences_per_prompt": 1.9,
+    "gap_sec": {
+      "median": 210,
+      "p25": 74,
+      "p90": 940
+    },
+    "short_followup_ratio": 0.17,
+    "laugh_prompts": 1,
+    "emoji_prompts": 0,
+    "korean_prompts": 88,
+    "non_korean_prompts": 24,
+    "english_mixed_ratio": 0.34,
+    "punctuation": {
+      "question": 41,
+      "exclaim": 1,
+      "none_ratio": 0.62
+    },
+    "style_summary": [
+      "명사로 끝내는 메모 같은 지시가 절반 가까이 된다",
+      "로그나 에러를 먼저 붙이고 무엇이 문제인지 묻는 형태가 많다",
+      "표본이 적어 마커 수치는 참고만 하는 편이 좋다"
+    ],
+    "reproduced_prompts": [
+      "이거 적재 실패 로그 확인 부탁",
+      "파티션 재처리 스크립트 필요",
+      "스케줄 시간 수정 가능한지"
+    ],
+    "samples_shortest": [
+      "여기에 프롬프트 원문이 들어오면 안 됩니다"
+    ]
+  },
+  "assets": {
+    "counts": {
+      "global_claude_md": 0,
+      "rules": 0,
+      "agents": 0,
+      "commands": 0,
+      "skills": 1,
+      "hooks": 0,
+      "permissions_allow": 4,
+      "statusline": false,
+      "mcp_servers": 0,
+      "plugins": 0,
+      "project_claude_md": 1
+    },
+    "share_worthy": []
+  },
+  "cases": [
+    {
+      "title": "적재 실패 원인 추적",
+      "project": "샘플-적재",
+      "when": "2026-08-11",
+      "task": "새벽 배치가 간헐적으로 실패하는 원인 찾기",
+      "how": "로그를 붙여 넣고 후보를 좁힌 뒤 Bash 로 재현",
+      "human_turns": 14,
+      "tool_calls": 46,
+      "outcome": "원인 1건 확인 · 재시도 로직 추가",
+      "saving": "원인 추적 이틀 → 반나절"
+    }
+  ],
+  "profile": {
+    "axes": {
+      "delegation": 2,
+      "verification": 3,
+      "planning": 7,
+      "perfectionism": 2,
+      "exploration": 3
+    },
+    "axes_evidence": {
+      "delegation": "위임·자율 2.1/100 · 서브에이전트 비중 5%",
+      "verification": "검증요구 9.2/100 · 재현으로 확인하는 편",
+      "planning": "plan 스킬 7회 · 프롬프트가 짧고 즉흥적이다",
+      "perfectionism": "불만·교정 8.4/100 · 짧은 후속 지시 17%",
+      "exploration": "완곡·탐색 6.1 대 강조·단정 3.4"
+    },
+    "rhythm": "필요할 때 짧게 열고 바로 닫는다",
+    "interest": "적재 파이프라인과 로그",
+    "definition": "이 사람은 필요한 순간에 짧게 물어 답을 얻고 바로 손으로 마무리하는 개발자다",
+    "teammate_tips": [
+      "맥락을 길게 설명하지 않으니 먼저 물어보는 편이 낫다",
+      "표본이 적어 이 보고서의 말투 수치는 흔들릴 수 있다",
+      "저녁 시간대에도 답이 온다"
+    ]
+  },
+  "fun": {
+    "mbti": {
+      "value": "ISTP",
+      "strength": "약함",
+      "basis": "짧은 지시와 실물 확인 선호 · 표본 88건이라 신뢰도는 낮다"
+    },
+    "age_band": {
+      "value": "20대 후반",
+      "strength": "없음(무작위)",
+      "basis": "신호가 거의 없다. ㅋㅋ 1건 · 이모지 0건"
+    },
+    "blood_type": {
+      "value": "A형",
+      "strength": "없음(무작위)",
+      "basis": "데이터 신호 0. 재미로만 보시길"
+    },
+    "nickname": "필요한 것만 딱 묻는 사람",
+    "pair_programming": "질문이 짧아 처음엔 무뚝뚝해 보이지만 맥락을 먼저 깔아주면 빠르게 붙는다. 긴 회의보다 화면 공유가 잘 맞는다."
+  },
+  "expert_index": {
+    "formula_version": 1,
+    "score": 32,
+    "level": "견습",
+    "emoji": "🔧",
+    "breakdown": {
+      "volume": 14.5,
+      "automation": 5.7,
+      "delegation": 2.9,
+      "assets": 3.3,
+      "omc": 5.7
+    },
+    "inputs": {
+      "sessions_long": 61,
+      "automation_depth": 3.4,
+      "subagent_msg_ratio": 0.05,
+      "asset_points": 2,
+      "omc_ratio": 0.06,
+      "distinct_commands": 2
+    }
+  },
+  "feedback": {
+    "works_well": [
+      "일회성 스크립트 초안",
+      "로그에서 원인 후보 좁히기"
+    ],
+    "works_poorly": [
+      "파이프라인 전체를 바꾸는 설계 작업"
+    ],
+    "blockers": [
+      "프로젝트 맥락이 CLAUDE.md 에 없어 매번 같은 설명을 반복한다"
+    ],
+    "proposals": [
+      "적재 파이프라인 구조를 CLAUDE.md 로 한 번 정리해 두면 좋겠다"
+    ]
+  },
+  "script_commit": "a1b2c3d"
+}

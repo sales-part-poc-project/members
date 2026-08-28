@@ -1,0 +1,622 @@
+{
+  "schema_version": 1,
+  "part": "샘플파트",
+  "name": "샘플-가",
+  "date": "2026-07-01",
+  "role": "주문 도메인 백엔드",
+  "highlight": "없음",
+  "env": {
+    "claude_code": "2.1.180",
+    "os": "Darwin 25.4.0",
+    "python": "3.12.3"
+  },
+  "coverage": {
+    "history": {
+      "from": "2026-02-03",
+      "to": "2026-07-01"
+    },
+    "session_stats": {
+      "from": "2026-02-03",
+      "to": "2026-07-01"
+    },
+    "transcripts": {
+      "from": "2026-06-02",
+      "to": "2026-07-01"
+    },
+    "speech_sample_size": 1020,
+    "failed_items": []
+  },
+  "summary": {
+    "one_liner": "Claude Code 를 주로 테스트 보강에 쓰고, 리팩터링은 이제 막 맡기기 시작했다",
+    "habit": "테스트부터 붙이고 본다",
+    "effect": "회귀 버그가 줄었다",
+    "pain": "큰 범위를 맡기면 자꾸 되돌린다"
+  },
+  "scale": {
+    "sessions_long": 210,
+    "active_months": 5,
+    "tool_calls_long": 12800,
+    "natural_prompts": 1080,
+    "slash_prompts": 280,
+    "subagent_msgs_30d": 640,
+    "tok_out_30d": 1500000,
+    "thinking_tok_30d": 380000,
+    "tok_cache_read_30d": 52000000,
+    "sessions_by_month": [
+      [
+        "2026-02",
+        38
+      ],
+      [
+        "2026-03",
+        55
+      ],
+      [
+        "2026-04",
+        61
+      ],
+      [
+        "2026-05",
+        49
+      ],
+      [
+        "2026-06",
+        7
+      ]
+    ],
+    "prompts_by_month": [
+      [
+        "2026-02",
+        190
+      ],
+      [
+        "2026-03",
+        288
+      ],
+      [
+        "2026-04",
+        320
+      ],
+      [
+        "2026-05",
+        250
+      ],
+      [
+        "2026-06",
+        32
+      ]
+    ],
+    "by_hour": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      9,
+      41,
+      132,
+      188,
+      164,
+      71,
+      148,
+      205,
+      190,
+      142,
+      88,
+      40,
+      22,
+      14,
+      8,
+      3,
+      1
+    ],
+    "by_dow": [
+      [
+        "Mon",
+        402
+      ],
+      [
+        "Tue",
+        448
+      ],
+      [
+        "Wed",
+        471
+      ],
+      [
+        "Thu",
+        430
+      ],
+      [
+        "Fri",
+        356
+      ],
+      [
+        "Sat",
+        26
+      ],
+      [
+        "Sun",
+        7
+      ]
+    ],
+    "rhythm_note": "이 회차에는 오후 사용이 많았다"
+  },
+  "projects_top": [
+    {
+      "project": "샘플-주문",
+      "sessions": 168,
+      "active_days": 62,
+      "human_turns": 820,
+      "tool_calls": 9400,
+      "main_model": "claude-opus-5",
+      "period": "2026-07-29 ~ 2026-08-28"
+    },
+    {
+      "project": "샘플-정산",
+      "sessions": 94,
+      "active_days": 38,
+      "human_turns": 460,
+      "tool_calls": 5100,
+      "main_model": "claude-opus-5",
+      "period": "2026-07-30 ~ 2026-08-26"
+    },
+    {
+      "project": "샘플-알림",
+      "sessions": 51,
+      "active_days": 21,
+      "human_turns": 210,
+      "tool_calls": 2300,
+      "main_model": "claude-sonnet-5",
+      "period": "2026-08-02 ~ 2026-08-25"
+    }
+  ],
+  "projects_other_count": 6,
+  "workflow": {
+    "automation_depth": 8.4,
+    "tools_top": [
+      [
+        "Bash",
+        8400
+      ],
+      [
+        "Read",
+        5600
+      ],
+      [
+        "Edit",
+        4100
+      ],
+      [
+        "Grep",
+        2600
+      ],
+      [
+        "Write",
+        1400
+      ],
+      [
+        "Task",
+        900
+      ],
+      [
+        "Glob",
+        720
+      ],
+      [
+        "TodoWrite",
+        410
+      ],
+      [
+        "WebFetch",
+        180
+      ],
+      [
+        "NotebookEdit",
+        40
+      ]
+    ],
+    "omc": {
+      "commands": [
+        [
+          "autopilot",
+          96
+        ],
+        [
+          "execute",
+          40
+        ],
+        [
+          "review",
+          22
+        ]
+      ],
+      "distinct_commands": 6,
+      "prompts_with_omc": 281,
+      "prompts_total": 1080,
+      "omc_ratio": 0.26,
+      "slash_omc_ratio": 0.33,
+      "keyword_ratio": 0.18,
+      "keyword_forms": [
+        [
+          "ulw",
+          44
+        ]
+      ],
+      "by_month": [
+        [
+          "2026-05",
+          120
+        ],
+        [
+          "2026-06",
+          32
+        ]
+      ]
+    },
+    "subagent_types": [
+      [
+        "executor",
+        84
+      ],
+      [
+        "Explore",
+        61
+      ],
+      [
+        "code-reviewer",
+        38
+      ],
+      [
+        "general-purpose",
+        12
+      ]
+    ],
+    "subagent_msg_ratio": 0.19,
+    "models": [
+      [
+        "claude-opus-5",
+        0.74
+      ],
+      [
+        "claude-sonnet-5",
+        0.21
+      ],
+      [
+        "claude-haiku-4-5",
+        0.05
+      ]
+    ],
+    "effort": [
+      [
+        "xhigh",
+        0.62
+      ],
+      [
+        "high",
+        0.31
+      ],
+      [
+        "medium",
+        0.07
+      ]
+    ],
+    "permission_mode": [
+      [
+        "acceptEdits",
+        0.81
+      ],
+      [
+        "default",
+        0.19
+      ]
+    ],
+    "mcp_servers": [
+      [
+        "context7",
+        62
+      ],
+      [
+        "filesystem",
+        18
+      ]
+    ],
+    "skills": [
+      [
+        "plan",
+        34
+      ],
+      [
+        "review",
+        21
+      ],
+      [
+        "verify",
+        12
+      ]
+    ],
+    "style_note": "한 번에 큰 범위를 맡기고 도구 호출이 길게 이어진다. 서브에이전트 비중이 높고 acceptEdits 로 두는 편이라 중간 개입이 적다. 확인은 마지막에 몰아서 한다."
+  },
+  "speech": {
+    "politeness": {
+      "formal": 0.05,
+      "casual": 0.78,
+      "noun": 0.17
+    },
+    "endings_top": [
+      [
+        "해줘",
+        412
+      ],
+      [
+        "말야",
+        88
+      ],
+      [
+        "같아",
+        61
+      ],
+      [
+        "줘",
+        54
+      ],
+      [
+        "봐",
+        38
+      ]
+    ],
+    "first_words_top": [
+      [
+        "이어서",
+        62
+      ],
+      [
+        "일단",
+        44
+      ],
+      [
+        "아니",
+        31
+      ],
+      [
+        "그럼",
+        24
+      ],
+      [
+        "다시",
+        19
+      ]
+    ],
+    "vocab_top": [
+      [
+        "리팩터링",
+        132
+      ],
+      [
+        "테스트",
+        118
+      ],
+      [
+        "커밋",
+        96
+      ],
+      [
+        "주문",
+        88
+      ],
+      [
+        "정산",
+        71
+      ],
+      [
+        "배포",
+        58
+      ],
+      [
+        "로그",
+        44
+      ],
+      [
+        "쿼리",
+        38
+      ],
+      [
+        "캐시",
+        27
+      ],
+      [
+        "마이그레이션",
+        21
+      ]
+    ],
+    "markers_per_100": {
+      "불만·교정": 21.4,
+      "완곡·탐색": 9.1,
+      "검증요구": 12.8,
+      "강조·단정": 7.2,
+      "칭찬·수용": 4.1,
+      "위임·자율": 8.6,
+      "속도·긴급": 1.2,
+      "범위한정": 3.9,
+      "설명요구": 5.4,
+      "사과·완충": 0.8
+    },
+    "len_chars": {
+      "median": 28,
+      "p90": 121,
+      "max": 1840
+    },
+    "sentences_per_prompt": 1.6,
+    "gap_sec": {
+      "median": 82,
+      "p25": 28,
+      "p90": 540
+    },
+    "short_followup_ratio": 0.31,
+    "laugh_prompts": 22,
+    "emoji_prompts": 4,
+    "korean_prompts": 1980,
+    "non_korean_prompts": 160,
+    "english_mixed_ratio": 0.48,
+    "punctuation": {
+      "question": 142,
+      "exclaim": 11,
+      "none_ratio": 0.71
+    },
+    "style_summary": [
+      "반말로 짧게 던지고 결과를 보고 바로 다음 지시를 이어간다",
+      "'이어서', '일단' 으로 문장을 열고 '해줘' 로 닫는 패턴이 뚜렷하다",
+      "불만·교정 마커가 높아 한 번에 받기보다 여러 번 다듬는 쪽이다"
+    ],
+    "reproduced_prompts": [
+      "이어서 정산 쪽도 같이 고쳐줘. 아까 고친 데가 아직 반영이 안 된 것 같은데 말야.",
+      "일단 테스트부터 돌려보고 깨지는 것만 알려줘.",
+      "아니 그거 말고 주문 쪽 캐시만 다시 봐줘."
+    ]
+  },
+  "assets": {
+    "counts": {
+      "global_claude_md": 1,
+      "rules": 3,
+      "agents": 2,
+      "commands": 4,
+      "skills": 6,
+      "hooks": 2,
+      "permissions_allow": 42,
+      "statusline": true,
+      "mcp_servers": 4,
+      "plugins": 3,
+      "project_claude_md": 9
+    },
+    "share_worthy": [
+      {
+        "asset": "rules/샘플-리뷰체크.md",
+        "reason": "리뷰 전 확인 항목. 파트 공통으로 쓸 만하다"
+      },
+      {
+        "asset": ".claude/commands/샘플-배포점검",
+        "reason": "배포 전 점검 절차를 한 번에 돌린다"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "title": "주문 상태머신 리팩터링",
+      "project": "샘플-주문",
+      "when": "2026-08-12",
+      "task": "분기문으로 흩어진 주문 상태 전이를 한 곳으로 모으기",
+      "how": "executor 서브에이전트 2개 · opus · acceptEdits",
+      "human_turns": 11,
+      "tool_calls": 240,
+      "outcome": "변경 파일 16개 · 테스트 34개 통과",
+      "saving": "약 5시간 → 50분 (직접 하던 이전 회차 대비)"
+    },
+    {
+      "title": "정산 배치 성능 개선",
+      "project": "샘플-정산",
+      "when": "2026-08-19",
+      "task": "월말 배치가 느려진 원인 찾아 쿼리 정리",
+      "how": "Explore 로 후보 좁힌 뒤 Bash 로 실행 계획 확인",
+      "human_turns": 7,
+      "tool_calls": 158,
+      "outcome": "배치 시간 42분 → 9분",
+      "saving": "원인 추적 반나절 → 1시간"
+    },
+    {
+      "title": "알림 템플릿 일괄 정리",
+      "project": "샘플-알림",
+      "when": "2026-08-24",
+      "task": "중복된 알림 문구 템플릿 통합",
+      "how": "Grep 으로 사용처 수집 후 Edit 일괄 적용",
+      "human_turns": 5,
+      "tool_calls": 96,
+      "outcome": "템플릿 28개 → 11개",
+      "saving": "약 3시간 → 30분"
+    }
+  ],
+  "profile": {
+    "axes": {
+      "delegation": 3,
+      "verification": 4,
+      "planning": 2,
+      "perfectionism": 3,
+      "exploration": 3
+    },
+    "axes_evidence": {
+      "delegation": "위임·자율 8.6/100 · 서브에이전트 메시지 비중 34% · acceptEdits 81%",
+      "verification": "검증요구 12.8/100 · 테스트 관련 어휘 상위",
+      "planning": "plan 계열 스킬 34회지만 프롬프트 길이 중앙값 28자로 짧다",
+      "perfectionism": "불만·교정 21.4/100 · 짧은 후속 지시 31%",
+      "exploration": "완곡·탐색 9.1 대 강조·단정 7.2 로 단정 쪽에 가깝다"
+    },
+    "rhythm": "오전에 큰 작업을 걸어두고 오후에 결과를 정리한다",
+    "interest": "리팩터링과 배치 성능",
+    "definition": "이 사람은 큰 단위로 맡기고 결과를 여러 번 다듬어 완성도를 맞추는 개발자다",
+    "teammate_tips": [
+      "첫 지시가 짧으니 배경을 먼저 물어보면 서로 편하다",
+      "중간 확인을 잘 안 하므로 되돌리기 쉬운 브랜치에서 작업하는 편이 낫다",
+      "오후 2~4시에 응답이 가장 빠르다"
+    ]
+  },
+  "fun": {
+    "mbti": {
+      "value": "ENTJ",
+      "strength": "약함",
+      "basis": "위임·자율 높고 단정 어투 · 다만 표본이 성격을 말해주진 않는다"
+    },
+    "age_band": {
+      "value": "30대 초반",
+      "strength": "약함",
+      "basis": "ㅋㅋ 22건 · 존댓말 5% · 야간 사용 2%"
+    },
+    "blood_type": {
+      "value": "O형",
+      "strength": "없음(무작위)",
+      "basis": "데이터 신호 0. 굳이 붙이자면 지시가 시원시원해서"
+    },
+    "nickname": "한 번에 크게 맡기는 사람",
+    "pair_programming": "범위를 크게 잡고 먼저 달리는 편이라, 옆에서 되돌릴 지점을 짚어주면 속도가 잘 난다. 세세한 확인을 요구하면 답답해할 수 있다."
+  },
+  "expert_index": {
+    "formula_version": 1,
+    "score": 74,
+    "level": "전문가",
+    "emoji": "🧠",
+    "breakdown": {
+      "volume": 18.8,
+      "automation": 4.2,
+      "delegation": 10.9,
+      "assets": 20.0,
+      "omc": 20.0
+    },
+    "inputs": {
+      "sessions_long": 210,
+      "automation_depth": 8.4,
+      "subagent_msg_ratio": 0.19,
+      "asset_points": 18,
+      "omc_ratio": 0.26,
+      "distinct_commands": 6
+    }
+  },
+  "feedback": {
+    "works_well": [
+      "패턴이 반복되는 리팩터링",
+      "테스트가 이미 있는 코드의 구조 변경",
+      "로그·설정 파일 일괄 정리"
+    ],
+    "works_poorly": [
+      "도메인 규칙이 문서에 없는 신규 기능",
+      "화면 레이아웃 미세 조정"
+    ],
+    "blockers": [
+      "긴 세션에서 앞부분 결정을 잊고 되돌아가는 일이 반복된다"
+    ],
+    "proposals": [
+      "파트 공통 리뷰 체크리스트를 rules 로 공유하자",
+      "자주 쓰는 배포 점검 절차를 커맨드로 만들어 돌려쓰자"
+    ]
+  },
+  "script_commit": "9f8e7d6"
+}
