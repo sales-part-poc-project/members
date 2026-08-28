@@ -25,11 +25,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - uses: actions/setup-python@main
 
       # 렌더러가 깨진 채로 배포되는 것을 막는다
       - name: 테스트
@@ -39,11 +37,11 @@ jobs:
       - name: 대시보드 빌드
         run: python3 scripts/build_site.py --out _site --repo-url "https://github.com/${{ github.repository }}"
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@main
         with:
           enablement: true   # Pages 가 꺼져 있으면 켜본다. 권한이 없으면 수동 설정 필요
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@main
         with:
           path: _site
 
@@ -55,4 +53,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@main
